@@ -1,0 +1,18 @@
+{
+  "id": "hyperdef",
+  "name": "Hyper Definition",
+  "display_name": "Hyper Definition",
+  "author": ["oxoboo"],
+  "description": "Made for a group of friends and content creators.",
+  "prefix": "hyperdef",
+  "main_file": "main.lua",
+  "priority": 0,
+  "badge_colour": "8700FF",
+  "badge_text_colour": "D866FF",
+  "version": "0.3.0",
+  "dependencies": [
+    "Steamodded (>=1.0.0~ALPHA-1401a)",
+    "Lovely (>=0.6)",
+    "Balatro (>=1.0.1n)"
+  ]
+}

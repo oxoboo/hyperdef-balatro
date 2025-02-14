@@ -1,0 +1,6 @@
+local load_jokers = SMODS.load_file('jokers.lua')
+local load_decks = SMODS.load_file('decks.lua')
+local load_challenges = SMODS.load_file('challenges.lua')
+load_jokers()
+load_decks()
+load_challenges()
