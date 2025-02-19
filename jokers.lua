@@ -14,14 +14,6 @@ local atlas_large = SMODS.Atlas {
     py = 190
 }
 
--- globals go here
-G.E_MANAGER:add_event(Event({
-    func = function()
-        G.hyperdef = {}
-        return true
-    end
-}))
-
 SMODS.Joker {
     key = 'shopcorp',
     loc_txt = {
@@ -264,7 +256,7 @@ SMODS.Joker {
                 end
             else
                 if context.other_card.config.center == G.P_CENTERS.m_gold then
-                    return { x_mult = G.P_CENTERS.m_steel.config.h_x_mult }
+                    return { xmult = G.P_CENTERS.m_steel.config.h_x_mult }
                 end
             end
         end
@@ -356,7 +348,7 @@ SMODS.Joker {
             'has a scoring {C:attention}#2#{}',
         }
     },
-    config = { extra = { x_mult = 3, value = '6', id = 6 } },
+    config = { extra = { xmult = 3, value = '6', id = 6 } },
     blueprint_compat = true,
     rarity = 3,
     atlas = atlas.key,
@@ -367,7 +359,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.x_mult,
+                card.ability.extra.xmult,
                 localize(card.ability.extra.value, 'ranks')
             }
         }
@@ -377,7 +369,7 @@ SMODS.Joker {
             local _, _, _, scoring_hand, _ = G.FUNCS.get_poker_hand_info(G.play.cards)
             for _, v in pairs(scoring_hand) do
                 if v:get_id() == card.ability.extra.id and not v.debuff then
-                    return { xmult = card.ability.extra.x_mult }
+                    return { xmult = card.ability.extra.xmult }
                 end
             end
         end
@@ -394,7 +386,7 @@ SMODS.Joker {
             'when scored {C:inactive}:3{}'
         }
     },
-    config = { extra = { x_mult = 1.75 } },
+    config = { extra = { xmult = 1.75 } },
     blueprint_compat = true,
     rarity = 3,
     atlas = atlas.key,
@@ -403,13 +395,13 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.x_mult } }
+        return { vars = { card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             if context.other_card.config.center ~= G.P_CENTERS.c_base then
                 return {
-                    xmult = card.ability.extra.x_mult,
+                    xmult = card.ability.extra.xmult,
                     card = card
                 }
             end
