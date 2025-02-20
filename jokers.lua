@@ -250,13 +250,15 @@ SMODS.Joker {
     discovered = true,
     calculate = function(self, card, context)
         if context.cardarea == G.hand and context.other_card and not context.blueprint then
-            if context.end_of_round then
-                if context.other_card.config.center == G.P_CENTERS.m_steel then
-                    return { p_dollars = G.P_CENTERS.m_gold.config.h_dollars }
-                end
-            else
-                if context.other_card.config.center == G.P_CENTERS.m_gold then
-                    return { xmult = G.P_CENTERS.m_steel.config.h_x_mult }
+            if not context.other_card.debuff then
+                if context.end_of_round then
+                    if context.other_card.config.center == G.P_CENTERS.m_steel then
+                        return { p_dollars = G.P_CENTERS.m_gold.config.h_dollars }
+                    end
+                else
+                    if context.other_card.config.center == G.P_CENTERS.m_gold then
+                        return { xmult = G.P_CENTERS.m_steel.config.h_x_mult }
+                    end
                 end
             end
         end
