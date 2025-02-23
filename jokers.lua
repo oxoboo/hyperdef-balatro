@@ -194,6 +194,51 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+    key = 'wooden_kaiju',
+    loc_txt = {
+        name = 'Wooden Kaiju',
+        text = {
+            'This Joker gains',
+            '{C:mult}+#1#{} Mult per {C:attention}hand{}',
+            'played this round',
+            '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
+        }
+    },
+    config = {
+        extra = {
+            gain = 4,
+            mult = 0
+        }
+    },
+    blueprint_compat = true,
+    rarity = 1,
+    atlas = atlas.key,
+    pos = { x = 2, y = 0 },
+    cost = 5,
+    unlocked = true,
+    discovered = true,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.gain,
+                card.ability.extra.mult
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
+        end
+        if context.end_of_round and not context.repetition and not context.blueprint and context.game_over == false then
+            card.ability.extra.mult = 0
+        end
+        if context.joker_main then
+            return { mult = card.ability.extra.mult }
+        end
+    end
+}
+
+SMODS.Joker {
     key = 'magazine',
     loc_txt  = {
         name = 'Magazine Subscription',
@@ -244,7 +289,7 @@ SMODS.Joker {
     blueprint_compat = false,
     rarity = 2,
     atlas = atlas.key,
-    pos = { x = 2, y = 0 },
+    pos = { x = 3, y = 0 },
     cost = 5,
     unlocked = true,
     discovered = true,
@@ -354,7 +399,7 @@ SMODS.Joker {
     blueprint_compat = true,
     rarity = 3,
     atlas = atlas.key,
-    pos = { x = 3, y = 0 },
+    pos = { x = 0, y = 1 },
     cost = 8,
     unlocked = true,
     discovered = true,
@@ -392,7 +437,7 @@ SMODS.Joker {
     blueprint_compat = true,
     rarity = 3,
     atlas = atlas.key,
-    pos = { x = 0, y = 1 },
+    pos = { x = 1, y = 1 },
     cost = 7,
     unlocked = true,
     discovered = true,
@@ -425,7 +470,7 @@ SMODS.Joker {
     blueprint_compat = true,
     rarity = 3,
     atlas = atlas.key,
-    pos = { x = 1, y = 1 },
+    pos = { x = 2, y = 1 },
     cost = 7,
     unlocked = true,
     discovered = true,
@@ -442,6 +487,70 @@ SMODS.Joker {
                 end
             }))
             return { message = 'Nice!' }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = 'adam',
+    loc_txt = {
+        name = 'Adam',
+        text = {
+            'After {C:attention}#1#{} rounds, sell',
+            'this card to create',
+            'a {C:legendary,E:1}Legendary{} Joker',
+            '{C:inactive}(Currently {C:attention}#2#{}{C:inactive}/#3#){}'
+        },
+    },
+    config = {
+        extra = {
+            rounds_required = 12,
+            rounds_passed = 0,
+            message_triggered = false
+        }
+    },
+    blueprint_compat = false,
+    perishable_compat = false,
+    eternal_compat = false,
+    rarity = 3,
+    atlas = atlas.key,
+    pos = { x = 3, y = 1 },
+    cost = 3,
+    unlocked = true,
+    discovered = true,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.rounds_required,
+                card.ability.extra.rounds_passed,
+                card.ability.extra.rounds_required
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.repetition and context.game_over == false and not context.blueprint then
+            card.ability.extra.rounds_passed = card.ability.extra.rounds_passed + 1
+            if card.ability.extra.message_triggered == false and card.ability.extra.rounds_passed >= card.ability.extra.rounds_required then
+                context.message_triggered = true
+                return { message = localize('k_active_ex') }
+            end
+        end
+        if context.selling_self and card.ability.extra.rounds_passed >= card.ability.extra.rounds_required then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    play_sound('timpani')
+                    local c = create_card('Joker', G.jokers, true, nil, nil, nil, nil, 'adam')
+                    -- Secret part of ability: If Adam is negative, make the legendary joker negative too
+                    if card.edition then
+                        if card.edition.negative then
+                            c:set_edition('e_negative', true)
+                        end
+                    end
+                    c:add_to_deck()
+                    G.jokers:emplace(c)
+                    return true
+                end
+            }))
         end
     end
 }
