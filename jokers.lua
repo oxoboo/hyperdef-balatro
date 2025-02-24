@@ -5,8 +5,8 @@ local atlas = SMODS.Atlas {
     py = 95
 }
 
--- NOTE: Steamodded (1.0.0~ALPHA-1401d-STEAMODDED) has a bug that does not
--- keep a joker's sprite's width or height when joker is copied using Ankh
+-- NOTE: Prior to Steamodded 1.0.0~1423b, width and height of sprites resets
+-- to default values when joker is copied using Ankh
 local atlas_large = SMODS.Atlas {
     key = 'hyperdef_large',
     path = 'JokersLarge.png',
