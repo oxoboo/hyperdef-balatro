@@ -531,7 +531,11 @@ SMODS.Joker {
         if context.end_of_round and not context.repetition and context.game_over == false and not context.blueprint then
             card.ability.extra.rounds_passed = card.ability.extra.rounds_passed + 1
             if card.ability.extra.message_triggered == false and card.ability.extra.rounds_passed >= card.ability.extra.rounds_required then
-                context.message_triggered = true
+                card.ability.extra.message_triggered = true
+                local eval = function(card)
+                    return card
+                end
+                juice_card_until(card, eval, true)
                 return { message = localize('k_active_ex') }
             end
         end
