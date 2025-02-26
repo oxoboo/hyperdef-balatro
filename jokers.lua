@@ -169,12 +169,11 @@ SMODS.Joker {
             extra.remaining = extra.every -
                 (((G.GAME.hands_played - extra.hands_played_at_create + 1) % extra.every) + 1)
             if extra.remaining == 0 then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        extra.active = true
-                        return true
-                    end
-                }))
+                extra.active = true
+                local eval = function(card)
+                    return card.ability.extra.active
+                end
+                juice_card_until(card, eval, true)
                 return { message = 'Active!' }
             elseif extra.active and extra.remaining == extra.every - 1 then
                 extra.active = false
