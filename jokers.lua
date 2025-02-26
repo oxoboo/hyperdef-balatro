@@ -338,8 +338,7 @@ SMODS.Joker {
     update = function(self, card, front)
         -- `G.STATE == G.STATES.SELECTING_HAND` after all cards are drawn from deck
         if G.STATE == G.STATES.SELECTING_HAND then
-            local extra = card.ability.extra
-            if extra.num_cards_to_destroy > 0 then
+            if card.ability.extra.num_cards_to_destroy > 0 then
                 local not_dissolved = {}
                 for _, v in pairs(G.hand.cards) do
                     if not v.dissolve then
@@ -365,7 +364,7 @@ SMODS.Joker {
                         end
                     }))
                     card_eval_status_text(card, 'extra', nil, nil, nil, { message = pseudorandom_element({'munch', 'crunch', 'slurp', 'nom' })})
-                    extra.num_cards_to_destroy = extra.num_cards_to_destroy - 1
+                    card.ability.extra.num_cards_to_destroy = card.ability.extra.num_cards_to_destroy - 1
                 end
             end
         end
@@ -376,8 +375,7 @@ SMODS.Joker {
     -- `context.setting_blind = true`, and cards will be removed on update().
     calculate = function(self, card, context)
         if context.setting_blind then
-            local extra = card.ability.extra
-            extra.num_cards_to_destroy = extra.num_cards_to_destroy + 1
+            card.ability.extra.num_cards_to_destroy = card.ability.extra.num_cards_to_destroy + 1
         end
         if context.joker_main then
             return { chips = card.ability.extra.chips }
