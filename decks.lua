@@ -118,7 +118,7 @@ SMODS.Booster {
     cost = 2,
     weight = 0,
     loc_vars = function(self, info_queue, card)
-        return { vars = { self.config.choose } }
+        return { vars = { self.config.choose, self.config.extra } }
     end,
     create_card = function(self, card, i)
         if i <= #self.config.jokers then
