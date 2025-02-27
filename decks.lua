@@ -92,9 +92,9 @@ SMODS.Booster {
         name = 'Hyper Pack',
         group_name = 'Hyper Pack',
         text = {
-            'Choose {C:attention}#1#{}',
-            '{C:attention}Hyper Definition{}',
-            '{C:joker}Joker{} card'
+            'Choose {C:attention}#1#{} of up to',
+            '{C:attention}#2#{} {C:attention}Hyper Definition{}',
+            '{C:joker}Joker{} cards'
         }
     },
     config = {
