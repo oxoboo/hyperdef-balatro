@@ -30,7 +30,7 @@ if ENABLE_TEST_DECK then
         discovered = true,
         apply = function()
             G.E_MANAGER:add_event(Event({
-                func = function()
+                func = function(self, back)
                     -- ease_dollars(10)
                     -- G.GAME.round_resets.hands = 5
                     -- G.GAME.round_resets.discards = 4
