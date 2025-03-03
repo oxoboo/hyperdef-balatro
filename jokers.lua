@@ -16,15 +16,6 @@ local atlas_large = SMODS.Atlas {
 
 SMODS.Joker {
     key = 'shopcorp',
-    loc_txt = {
-        name = 'Shop-Corp Poster',
-        text = {
-            'This Joker gains {C:mult}+#1#{} Mult ',
-            'when a card from deck is',
-            '{C:attention}destroyed{}',
-            '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
-        }
-    },
     config = { extra = { mult = 0, gain = 3 } },
     blueprint_compat = true,
     rarity = 1,
@@ -53,16 +44,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'horse_plinko',
-    loc_txt = {
-        name = 'Horse Plinko',
-        text = {
-            '{C:green}#1# in #2#{} chance to give {C:chips}+#3#{} Chips',
-            '{C:green}#4# in #5#{} chance to give {C:chips}+#6#{} Chips',
-            '{C:green}#7# in #8#{} chance to give {C:chips}+#9#{} Chips',
-            '{C:green}#10# in #11#{} chance to give {C:chips}+#12#{} Chips',
-            '{C:inactive}(Chances cannot be modified){}'
-        }
-    },
     config = {
         extra = {
             chances_outcomes = {
@@ -108,15 +89,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'buffer_joker',
-    loc_txt = {
-        name = 'Buffer Joker',
-        text = {
-            'Every {C:attention}#1#{} hands, give',
-            '{C:blue}+#2#{} hands this round',
-            'and {C:attention}debuff{} played hand',
-            '{C:inactive}#3#{}'
-        }
-    },
     config = {
         extra = {
             active = false,
@@ -194,15 +166,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'wooden_kaiju',
-    loc_txt = {
-        name = 'Wooden Kaiju',
-        text = {
-            'This Joker gains',
-            '{C:mult}+#1#{} Mult per {C:attention}hand{}',
-            'played this round',
-            '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
-        }
-    },
     config = {
         extra = {
             gain = 4,
@@ -239,14 +202,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'magazine',
-    loc_txt  = {
-        name = 'Magazine Subscription',
-        text = {
-            'When {C:attention}Blind{} is selected, spend',
-            '{C:money}$#1#{} and create a {C:spectral}Spectral{} card',
-            '{C:inactive}(Must have room)'
-        }
-    },
     config = { extra = { spend = 3 } },
     blueprint_compat = true,
     rarity = 2,
@@ -277,14 +232,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'alchemy',
-    loc_txt = {
-        name = 'Alchemy',
-        text = {
-            '{C:attention}Gold{} and {C:attention}Steel{}',
-            'cards share',
-            'abilities'
-        }
-    },
     blueprint_compat = false,
     rarity = 2,
     atlas = atlas.key,
@@ -311,14 +258,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'hydra',
-    loc_txt = {
-        name = 'Hydra the Fox',
-        text = {
-            '{C:chips}+#1#{} Chips, {C:attention}destroy{}',
-            'a {C:attention}random{} card in hand',
-            'at start of round'
-        }
-    },
     config = {
         extra = {
             chips = 100,
@@ -385,13 +324,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'fish_satan',
-    loc_txt = {
-        name = 'Fish Satan',
-        text = {
-            '{X:mult,C:white} X#1# {} Mult if played hand',
-            'has a scoring {C:attention}#2#{}',
-        }
-    },
     config = { extra = { xmult = 3, value = '6', id = 6 } },
     blueprint_compat = true,
     rarity = 3,
@@ -422,14 +354,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'creature',
-    loc_txt = {
-        name = 'Creature',
-        text = {
-            'Each {C:attention}Enhanced{}{C:inactive}d{} card',
-            'gives {X:mult,C:white} X#1# {} Mult{C:inactive}t{}',
-            'when scored {C:inactive}:3{}'
-        }
-    },
     config = { extra = { xmult = 1.75 } },
     blueprint_compat = true,
     rarity = 3,
@@ -455,15 +379,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'oxoboo',
-    loc_txt = {
-        name = 'Oxoboo',
-        text = {
-            'Create a {C:dark_edition}Negative{}',
-            '{C:tarot}Tarot{} card if {C:attention}Blind{}',
-            'is defeated on the',
-            '{C:attention}first hand{} of round'
-        }
-    },
     blueprint_compat = true,
     rarity = 3,
     atlas = atlas.key,
@@ -490,15 +405,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'adam',
-    loc_txt = {
-        name = 'Adam',
-        text = {
-            'After {C:attention}#1#{} rounds, sell',
-            'this card to create',
-            'a {C:legendary,E:1}Legendary{} Joker',
-            '{C:inactive}(Currently {C:attention}#2#{}{C:inactive}/#3#){}'
-        },
-    },
     config = {
         extra = {
             rounds_required = 12,
@@ -558,15 +464,6 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'low_poly_holly',
-    loc_txt = {
-        name = 'Low Poly Holly',
-        text = {
-            'If played hand has {C:attention}only{}',
-            '{C:attention}1{} card, {C:attention}all face{} cards',
-            'held in hand are',
-            'converted into that card'
-        }
-    },
     blueprint_compat = false,
     rarity = 4,
     atlas = atlas.key,

@@ -46,13 +46,6 @@ SMODS.Back {
     name = 'Hyper Deck',
     key = 'hyper',
     pos = { x = 5, y = 2 },
-    loc_txt = {
-        name = 'Hyper Deck',
-        text = {
-            'First shop has a',
-            '{C:attention}Hyper Pack{}'
-        }
-    },
     unlocked = true,
     discovered = true,
     apply = function(self, back)
@@ -88,15 +81,6 @@ SMODS.Booster {
     key = 'hyper',
     atlas = atlas_boosters.key,
     pos = { x = 0, y = 0 },
-    loc_txt = {
-        name = 'Hyper Pack',
-        group_name = 'Hyper Pack',
-        text = {
-            'Choose {C:attention}#1#{} of up to',
-            '{C:attention}#2#{} {C:attention}Hyper Definition{}',
-            '{C:joker}Joker{} cards'
-        }
-    },
     config = {
         extra = 11,
         choose = 1,
