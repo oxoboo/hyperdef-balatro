@@ -7,6 +7,13 @@ local atlas_boosters = SMODS.Atlas {
     py = 95
 }
 
+local atlas_enhancers = SMODS.Atlas {
+    key = 'enhancers',
+    path = 'Enhancers.png',
+    px = 71,
+    py = 95
+}
+
 function deck_add_joker(forced_key)
     local card = create_card('Joker', G.jokers, nil, nil, nil, nil, forced_key, 'deck')
     card:add_to_deck()
@@ -45,7 +52,8 @@ end
 SMODS.Back {
     name = 'Hyper Deck',
     key = 'hyper',
-    pos = { x = 5, y = 2 },
+    atlas = atlas_enhancers.key,
+    pos = { x = 0, y = 0 },
     unlocked = true,
     discovered = true,
     apply = function(self, back)
