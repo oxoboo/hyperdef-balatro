@@ -42,4 +42,4 @@ The `old-calc` version will **not** fully work with this mod.
 |-------|-----------|
 |Hyper Pack*|Choose 1 of up to 11 Hyper Definition Joker cards|
 
-*Hyper Pack is only available once per run using the Hyper Deck
+*Hyper Pack only appears in the Hyper Deck
