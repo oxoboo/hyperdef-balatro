@@ -117,13 +117,17 @@ return {
         Other = {
             p_hyperdef_hyper = {
                 name = 'Hyper Pack',
-                group_name = 'Hyper Pack',
                 text = {
                     'Choose {C:attention}#1#{} of up to',
                     '{C:attention}#2#{} {C:attention}Hyper Definition{}',
                     '{C:joker}Joker{} cards'
                 }
             }
+        }
+    },
+    misc = {
+        dictionary = {
+            hyper = 'Hyper Pack'
         }
     }
 }
