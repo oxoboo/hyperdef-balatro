@@ -3,7 +3,7 @@
 Made for a group of friends and content creators.
 
 ## Requirements
-- Balatro 1.0.1n (the latest version)
+- Balatro 1.0.1n or later
 - **[Lovely v0.6.0](https://github.com/ethangreen-dev/lovely-injector)** or later
 - **[Steamodded 1.0.0~ALPHA-1401a](https://github.com/Steamodded/smods/wiki)** or later.
 The `old-calc` version will **not** fully work with this mod.
