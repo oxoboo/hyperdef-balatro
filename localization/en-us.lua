@@ -127,7 +127,7 @@ return {
     },
     misc = {
         dictionary = {
-            hyper = 'Hyper Pack',
+            k_hyperdef_hyper_pack = 'Hyper Pack',
             k_hyperdef_hydra1 = 'munch',
             k_hyperdef_hydra2 = 'slurp',
             k_hyperdef_hydra3 = 'nom',

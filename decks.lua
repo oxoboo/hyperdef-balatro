@@ -87,7 +87,7 @@ SMODS.Back {
 -- This booster is only for the Hyper Deck
 SMODS.Booster {
     key = 'hyper',
-    group_key = 'hyper',
+    group_key = 'k_hyperdef_hyper_pack',
     atlas = atlas_boosters.key,
     pos = { x = 0, y = 0 },
     config = {
