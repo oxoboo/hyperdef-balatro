@@ -33,11 +33,7 @@ SMODS.Joker {
         end
         if context.removed and not context.blueprint then
             card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.gain * #context.removed)
-            return {
-                message = 'Upgraded!',
-                colour = G.C.MULT,
-                card = card
-            }
+            return { message = localize('k_upgrade_ex') }
         end
     end
 }
@@ -107,12 +103,11 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue, card)
-        local remaining_message = nil
-        if card.ability.extra.remaining == 0 then
-            remaining_message = 'Active!'
-        else
-            remaining_message = card.ability.extra.remaining .. ' remaining'
-        end
+        local remaining_message = localize {
+            type = 'variable',
+            key = (card.ability.extra.remaining == 0 and 'hyperdef_buffer_active' or 'hyperdef_buffer_inactive'),
+            vars = { card.ability.extra.remaining }
+        }
         return {
             vars = {
                 card.ability.extra.every,
@@ -146,7 +141,7 @@ SMODS.Joker {
                     return card.ability.extra.active
                 end
                 juice_card_until(card, eval, true)
-                return { message = 'Active!' }
+                return { message = localize('k_active_ex') }
             elseif extra.active and extra.remaining == extra.every - 1 then
                 extra.active = false
                 G.E_MANAGER:add_event(Event({
@@ -158,7 +153,7 @@ SMODS.Joker {
                         return true
                     end
                 }))
-                return { message = 'Reverted!' }
+                return { message = localize('k_reset') }
             end
         end
     end
@@ -302,7 +297,12 @@ SMODS.Joker {
                             return true
                         end
                     }))
-                    card_eval_status_text(card, 'extra', nil, nil, nil, { message = pseudorandom_element({'munch', 'crunch', 'slurp', 'nom' })})
+                    local message = pseudorandom_element({
+                        localize('k_hyperdef_hydra1'),
+                        localize('k_hyperdef_hydra2'),
+                        localize('k_hyperdef_hydra3')
+                    })
+                    card_eval_status_text(card, 'extra', nil, nil, nil, { message = message })
                     card.ability.extra.num_cards_to_destroy = card.ability.extra.num_cards_to_destroy - 1
                 end
             end
@@ -398,7 +398,7 @@ SMODS.Joker {
                     return true
                 end
             }))
-            return { message = 'Nice!' }
+            return { message = localize('k_hyperdef_nice') }
         end
     end
 }
@@ -493,7 +493,7 @@ SMODS.Joker {
                         return true
                     end
                 }))
-                return { message = 'Converted!' }
+                return { message = localize('k_hyperdef_converted') }
             end
         end
     end

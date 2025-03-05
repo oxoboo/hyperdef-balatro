@@ -127,7 +127,16 @@ return {
     },
     misc = {
         dictionary = {
-            hyper = 'Hyper Pack'
+            hyper = 'Hyper Pack',
+            k_hyperdef_hydra1 = 'munch',
+            k_hyperdef_hydra2 = 'slurp',
+            k_hyperdef_hydra3 = 'nom',
+            k_hyperdef_nice = 'Nice!',
+            k_hyperdef_converted = 'Converted!',
+        },
+        v_dictionary = {
+            hyperdef_buffer_active = 'Active!',
+            hyperdef_buffer_inactive = '#1# remaining'
         }
     }
 }
