@@ -105,7 +105,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         local remaining_message = localize {
             type = 'variable',
-            key = (card.ability.extra.remaining == 0 and 'hyperdef_buffer_active' or 'hyperdef_buffer_inactive'),
+            key = (card.ability.extra.remaining == 0 and 'loyalty_active' or 'loyalty_inactive'),
             vars = { card.ability.extra.remaining }
         }
         return {
