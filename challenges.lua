@@ -1,6 +1,5 @@
 SMODS.Challenge {
-    key = 'polycule',
-    loc_txt = { name = 'Polycule' },
+    key = 'hyperdef_polycule',
     unlocked = true,
     jokers = {
         { id = 'j_hyperdef_low_poly_holly', eternal = true },
@@ -16,8 +15,7 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
-    key = 'cerberus',
-    loc_txt = { name = 'Cerberus' },
+    key = 'hyperdef_cerberus',
     unlocked = true,
     jokers = {
         { id = 'j_hyperdef_hydra', edition = 'negative', eternal = true },
@@ -28,8 +26,7 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
-    key = 'instrumentality',
-    loc_txt = { name = 'Instrumentality' },
+    key = 'hyperdef_instrumentality',
     unlocked = true,
     rules = {
         custom = {

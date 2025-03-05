@@ -7,6 +7,13 @@ return {
                     'First shop has a',
                     '{C:attention}Hyper Pack{}'
                 }
+            },
+            b_hyperdef_test = {
+                name = 'Hyper Definition Test Deck',
+                text = {
+                    'This is a Test Deck',
+                    'for {C:attention}Hyper Definition{}'
+                }
             }
         },
         Joker = {
@@ -126,6 +133,11 @@ return {
         }
     },
     misc = {
+        challenge_names = {
+            c_hyperdef_polycule = 'Polycule',
+            c_hyperdef_cerberus = 'Cerberus',
+            c_hyperdef_instrumentality = 'Instrumentality'
+        },
         dictionary = {
             k_hyperdef_hyper_pack = 'Hyper Pack',
             k_hyperdef_hydra1 = 'munch',

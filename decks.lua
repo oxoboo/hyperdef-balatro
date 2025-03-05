@@ -24,15 +24,8 @@ end
 if ENABLE_TEST_DECK then
     SMODS.Back {
         name = 'Hyper Definition Test Deck',
-        key = 'hyperdef-test',
+        key = 'test',
         pos = { x = 0, y = 0 },
-        loc_txt = {
-            name = 'Hyper Definition Test Deck',
-            text = {
-                'This is a Test Deck',
-                'for {C:attention}Hyper Definition{}'
-            },
-        },
         unlocked = true,
         discovered = true,
         apply = function()
