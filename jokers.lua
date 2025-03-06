@@ -476,6 +476,8 @@ SMODS.Joker {
                 end
             end
             if face_card_in_hand and #G.play.cards == 1 then
+                -- Show message and convert cards held in hand before hand
+                -- is evaluated
                 attention_text({
                     text = localize('k_hyperdef_converted'),
                     scale = 0.7,
@@ -487,7 +489,6 @@ SMODS.Joker {
                 })
                 play_sound('generic1', 1, 1)
                 card:juice_up(0.6, 0.1)
-                -- delay(1)
                 for _, v in pairs(G.hand.cards) do
                     if v:is_face() then
                         copy_card(G.play.cards[1], v)
