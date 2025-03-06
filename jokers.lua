@@ -87,12 +87,10 @@ SMODS.Joker {
     key = 'buffer_joker',
     config = {
         extra = {
-            active = false,
             every = 6,
             remaining = 5,
             give = 1,
-            hands_played_at_create = 0,
-            at_create_set = false,
+            hands_played_at_create = nil,
         }
     },
     blueprint_compat = false,
@@ -118,11 +116,10 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         local extra = card.ability.extra
-        if extra.at_create_set == false then
-            extra.at_create_set = true
+        if not extra.hands_played_at_create then
             extra.hands_played_at_create = G.GAME.hands_played
         end
-        if context.before and card.ability.extra.active and not context.blueprint then
+        if context.before and not context.blueprint and extra.remaining == 0 then
             -- Add +1 hand before hand is evaluated to prevent game over
             -- when number of hands left reaches zero
             ease_hands_played(extra.give)
@@ -133,17 +130,15 @@ SMODS.Joker {
         if context.after and not context.blueprint then
             -- Game does not immediately update `G.GAME.hands_played` when
             -- `context.after = true`, add 1 to hands played
-            extra.remaining = extra.every -
-                (((G.GAME.hands_played - extra.hands_played_at_create + 1) % extra.every) + 1)
+            extra.remaining = extra.every - (((G.GAME.hands_played - extra.hands_played_at_create + 1) % extra.every) + 1)
             if extra.remaining == 0 then
-                extra.active = true
                 local eval = function(card)
-                    return card.ability.extra.active
+                    return (card.ability.extra.remaining == 0)
                 end
                 juice_card_until(card, eval, true)
                 return { message = localize('k_active_ex') }
-            elseif extra.active and extra.remaining == extra.every - 1 then
-                extra.active = false
+            elseif extra.remaining == extra.every - 1 then
+                -- Reset debuff state of played cards
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         for _, v in pairs(G.play.cards) do
