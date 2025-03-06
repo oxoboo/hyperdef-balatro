@@ -472,7 +472,6 @@ SMODS.Joker {
     cost = 20,
     unlocked = true,
     discovered = true,
-    -- BUG: cards that are enhanced may not trigger on the same played hand
     calculate = function(self, card, context)
         if context.before and not context.repetition and not context.blueprint then
             local face_card_in_hand = false
@@ -482,18 +481,24 @@ SMODS.Joker {
                 end
             end
             if face_card_in_hand and #G.play.cards == 1 then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        for _, v in pairs(G.hand.cards) do
-                            if v:is_face() then
-                                copy_card(G.play.cards[1], v)
-                                v:juice_up()
-                            end
-                        end
-                        return true
+                attention_text({
+                    text = localize('k_hyperdef_converted'),
+                    scale = 0.7,
+                    hold = 1,
+                    backdrop_colour = G.C.FILTER,
+                    align = 'bm',
+                    major = card,
+                    offset = { x = 0, y = 0.05 * card.T.h }
+                })
+                play_sound('generic1', 1, 1)
+                card:juice_up(0.6, 0.1)
+                -- delay(1)
+                for _, v in pairs(G.hand.cards) do
+                    if v:is_face() then
+                        copy_card(G.play.cards[1], v)
+                        v:juice_up()
                     end
-                }))
-                return { message = localize('k_hyperdef_converted') }
+                end
             end
         end
     end
