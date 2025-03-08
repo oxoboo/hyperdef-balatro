@@ -59,11 +59,13 @@ SMODS.Back {
                     if G.shop_booster.cards[#G.shop_booster.cards] then
                         G.shop_booster.cards[#G.shop_booster.cards] = nil
                         local card = Card(
-                            G.shop_booster.T.x + G.shop_booster.T.w/2,
-                            G.shop_booster.T.y, G.CARD_W*1.27, G.CARD_H*1.27,
+                            G.shop_booster.T.x + G.shop_booster.T.w / 2,
+                            G.shop_booster.T.y,
+                            G.CARD_W * 1.27,
+                            G.CARD_H * 1.27,
                             G.P_CARDS.empty,
                             G.P_CENTERS['p_hyperdef_hyper'],
-                            {bypass_discovery_center = true, bypass_discovery_ui = true}
+                            { bypass_discovery_center = true, bypass_discovery_ui = true }
                         )
                         card:start_materialize()
                         G.shop_booster:emplace(card)

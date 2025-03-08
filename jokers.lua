@@ -5,8 +5,8 @@ local atlas = SMODS.Atlas {
     py = 95
 }
 
--- NOTE: Prior to Steamodded 1.0.0~1423b, width and height of sprites resets
--- to default values when joker is copied using Ankh
+-- NOTE: Prior to Steamodded 1.0.0~1423b, copies craeted using Ankh will have
+-- default px and py for sprites
 local atlas_large = SMODS.Atlas {
     key = 'hyperdef_large',
     path = 'JokersLarge.png',
@@ -248,12 +248,7 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'hydra',
-    config = {
-        extra = {
-            chips = 100,
-            num_cards_to_destroy = 0,
-        }
-    },
+    config = { extra = { chips = 100, num_cards_to_destroy = 0 } },
     blueprint_compat = true,
     rarity = 2,
     atlas = atlas_large.key,
