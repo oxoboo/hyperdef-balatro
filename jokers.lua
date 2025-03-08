@@ -5,8 +5,8 @@ local atlas = SMODS.Atlas {
     py = 95
 }
 
--- NOTE: Prior to Steamodded 1.0.0~1423b, copies craeted using Ankh will have
--- default px and py for sprites
+-- NOTE: Prior to Steamodded 1.0.0~1423b, copies created using Ankh will have
+-- default px and py
 local atlas_large = SMODS.Atlas {
     key = 'hyperdef_large',
     path = 'JokersLarge.png',
