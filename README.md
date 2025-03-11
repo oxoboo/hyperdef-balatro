@@ -11,7 +11,7 @@ The `old-calc` version will **not** fully work with this mod.
 ## Installation
 1. Follow the instructions for installing **[Lovely](https://github.com/ethangreen-dev/lovely-injector)** and **[Steamodded](https://github.com/Steamodded/smods/wiki)**.
 2. Download the latest release or source code.
-3. Extract `hyperdef-balatro-main` to the `Mods` folder.
+3. Extract `hyperdef-balatro` to the `Mods` folder.
 **Windows:** `%AppData%/Balatro/Mods`;
 **Mac:** `~/Library/Application Support/Balatro/Mods`;
 **Linux (WINE/Proton):** `~/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro/Mods`;
