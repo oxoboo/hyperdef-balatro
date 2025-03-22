@@ -4,8 +4,8 @@ return {
             b_hyperdef_hyper = {
                 name = 'Hyper Deck',
                 text = {
-                    'First shop has a',
-                    '{C:attention}Hyper Pack{}'
+                    'First shop has',
+                    '{C:attention}Hyper Packs{}'
                 }
             },
             b_hyperdef_test = {
@@ -146,8 +146,16 @@ return {
             }
         },
         Other = {
-            p_hyperdef_hyper = {
-                name = 'Hyper Pack',
+            p_hyperdef_hyper1 = {
+                name = 'Hyper Pack 1',
+                text = {
+                    'Choose {C:attention}#1#{} of up to',
+                    '{C:attention}#2#{} {C:attention}Hyper Definition{}',
+                    '{C:joker}Joker{} cards'
+                }
+            },
+            p_hyperdef_hyper2 = {
+                name = 'Hyper Pack 2',
                 text = {
                     'Choose {C:attention}#1#{} of up to',
                     '{C:attention}#2#{} {C:attention}Hyper Definition{}',
