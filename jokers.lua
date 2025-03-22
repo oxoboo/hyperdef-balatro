@@ -191,6 +191,70 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+    key = 'stead_dog',
+    config = {
+        extra = {
+            percent = 30,
+            decrease = 6
+        }
+    },
+    blueprint_compat = false,
+    perishable_compat = false,
+    eternal_compat = false,
+    rarity = 1,
+    atlas = atlas_large.key,
+    pos = { x = 3, y = 0 },
+    cost = 5,
+    unlocked = true,
+    discovered = true,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.percent,
+                card.ability.extra.decrease
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local chips = G.GAME.blind.chips * (card.ability.extra.percent / 100)
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.GAME.chips = chips
+                    return true
+                end
+            }))
+            return {
+                message = '=' .. chips,
+                colour = G.C.BLUE
+            }
+        end
+        if context.end_of_round and not context.repetiton and not context.blueprint and context.game_over == false then
+            card.ability.extra.percent = card.ability.extra.percent - card.ability.extra.decrease
+            if card.ability.extra.percent > 0 then
+                return {
+                    message = '-' .. card.ability.extra.decrease,
+                    colour = G.C.BLUE
+                }
+            else
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('tarot1')
+                        G.jokers:remove_card(card)
+                        card:remove()
+                        return true
+                    end
+                }))
+                return {
+                    message = localize('k_eaten_ex'),
+                    colour = G.C.RED
+                }
+            end
+        end
+    end
+}
+
+SMODS.Joker {
     key = 'magazine',
     config = { extra = { spend = 3 } },
     blueprint_compat = true,
@@ -246,6 +310,7 @@ SMODS.Joker {
     end
 }
 
+-- TODO: rewrite calculate()
 SMODS.Joker {
     key = 'hydra',
     config = { extra = { chips = 100, num_cards_to_destroy = 0 } },
@@ -453,12 +518,101 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+    key = 'manic',
+    config = { extra = { active = false } },
+    blueprint_compat = false,
+    rarity = 3,
+    atlas = atlas.key,
+    pos = { x = 0, y = 2 },
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            card.ability.extra.active = true
+            local eval = function(card)
+                return card.ability.extra.active
+            end
+            juice_card_until(card, eval, true)
+        end
+        if context.end_of_round and not context.blueprint then
+            card.ability.extra.active = false
+        end
+        if card.ability.extra.active and context.pre_discard and not context.blueprint then
+            card.ability.extra.active = false
+            for i = 1, #G.hand.highlighted do
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.15,
+                    func = function()
+                        -- `percent` is the pitch of the sounds played, the
+                        -- values used below are similar to the ones used for
+                        -- Sigil or Ouija
+                        local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+                        play_sound('card1', percent, 0.6)
+                        if G.hand.highlighted[i].facing == 'front' then
+                            G.hand.highlighted[i]:flip()
+                        end
+                        return true
+                    end
+                }))
+            end
+            delay(0.2)
+            for i = 1, #G.hand.highlighted do
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.15,
+                    func = function()
+                        local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+                        G.hand.highlighted[i]:set_base(pseudorandom_element(G.P_CARDS, pseudoseed('manic')))
+                        play_sound('tarot2', percent, 0.6)
+                        G.hand.highlighted[i]:flip()
+                        return true
+                    end
+                }))
+            end
+            delay(1.3)
+        end
+    end
+}
+
+SMODS.Joker {
+    key = 'stead',
+    blueprint_compat = false,
+    perishable_compat = false,
+    eternal_compat = false,
+    rarity = 3,
+    atlas = atlas.key,
+    pos = { x = 1, y = 2 },
+    cost = 15,
+    unlocked = true,
+    discovered = true,
+    calculate = function(self, card, context)
+        if context.selling_self then
+            local other_joker = nil
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    other_joker = G.jokers.cards[i + 1]
+                    break
+                end
+            end
+            if other_joker then
+                local c = copy_card(other_joker)
+                c:add_to_deck()
+                c:start_materialize()
+                G.jokers:emplace(c)
+            end
+        end
+    end
+}
+
+SMODS.Joker {
     key = 'low_poly_holly',
     blueprint_compat = false,
     rarity = 4,
     atlas = atlas.key,
-    pos = { x = 0, y = 2 },
-    soul_pos = { x = 1, y = 2 },
+    pos = { x = 2, y = 2 },
+    soul_pos = { x = 3, y = 2 },
     cost = 20,
     unlocked = true,
     discovered = true,

@@ -54,6 +54,14 @@ return {
                     '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
                 }
             },
+            j_hyperdef_stead_dog = {
+                name = 'Stead Dog',
+                text = {
+                    'Start round with',
+                    '{C:attention}#1#%{} of required chips,',
+                    '{C:attention}-#2#%{} per round'
+                }
+            },
             j_hyperdef_magazine  = {
                 name = 'Magazine Subscription',
                 text = {
@@ -76,6 +84,14 @@ return {
                     '{C:chips}+#1#{} Chips, {C:attention}destroy{}',
                     'a {C:attention}random{} card in hand',
                     'at start of round'
+                }
+            },
+            j_hyperdef_manic = {
+                name = 'Manic Scribbles',
+                text = {
+                    'Randomly change {C:attention}rank{} and',
+                    '{C:attention}suit{} of each card in',
+                    'first {C:attention}discard{} of round'
                 }
             },
             j_hyperdef_fish_satan = {
@@ -109,6 +125,14 @@ return {
                     'this card to create',
                     'a {C:legendary,E:1}Legendary{} Joker',
                     '{C:inactive}(Currently {C:attention}#2#{}{C:inactive}/#3#){}'
+                }
+            },
+            j_hyperdef_stead = {
+                name = 'Stead',
+                text = {
+                    'Sell this card to',
+                    '{C:attention}Duplicate{} Joker to',
+                    'the right of this card'
                 }
             },
             j_hyperdef_low_poly_holly = {

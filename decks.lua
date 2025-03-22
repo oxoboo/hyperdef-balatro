@@ -86,20 +86,23 @@ SMODS.Booster {
     atlas = atlas_boosters.key,
     pos = { x = 0, y = 0 },
     config = {
-        extra = 11,
+        extra = 14,
         choose = 1,
         jokers = {
             'j_hyperdef_shopcorp',
             'j_hyperdef_horse_plinko',
             'j_hyperdef_buffer_joker',
             'j_hyperdef_wooden_kaiju',
+            'j_hyperdef_stead_dog',
             'j_hyperdef_magazine',
             'j_hyperdef_alchemy',
             'j_hyperdef_hydra',
+            'j_hyperdef_manic',
             'j_hyperdef_fish_satan',
             'j_hyperdef_creature',
             'j_hyperdef_oxoboo',
-            'j_hyperdef_adam'
+            'j_hyperdef_adam',
+            'j_hyperdef_stead'
         }
     },
     discovered = true,
