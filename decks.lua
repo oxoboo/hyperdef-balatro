@@ -119,9 +119,7 @@ SMODS.Booster {
         return { vars = { self.config.choose, self.config.extra } }
     end,
     create_card = function(self, card, i)
-        if i <= #self.config.jokers then
-            return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'pack')
-        end
+        return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'pack')
     end
 }
 
@@ -151,8 +149,6 @@ SMODS.Booster {
         return { vars = { self.config.choose, self.config.extra } }
     end,
     create_card = function(self, card, i)
-        if i <= #self.config.jokers then
-            return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'pack')
-        end
+        return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'pack')
     end
 }
