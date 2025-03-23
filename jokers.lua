@@ -293,6 +293,10 @@ SMODS.Joker {
     cost = 5,
     unlocked = true,
     discovered = true,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.m_gold
+        info_queue[#info_queue+1] = G.P_CENTERS.m_steel
+    end,
     calculate = function(self, card, context)
         if context.cardarea == G.hand and context.other_card and not context.blueprint then
             if not context.other_card.debuff then
