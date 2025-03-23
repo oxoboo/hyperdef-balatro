@@ -149,17 +149,19 @@ return {
             p_hyperdef_hyper1 = {
                 name = 'Hyper Pack 1',
                 text = {
-                    'Choose {C:attention}#1#{} of up to',
-                    '{C:attention}#2#{} {C:attention}Hyper Definition{}',
-                    '{C:joker}Joker{} cards'
+                    'Choose {C:attention}#1#{} of {C:attention}#2#{}',
+                    'Hyper Definition',
+                    '{C:joker}Joker{} cards',
+                    '{C:inactive}(Only in Hyper Deck){}'
                 }
             },
             p_hyperdef_hyper2 = {
                 name = 'Hyper Pack 2',
                 text = {
-                    'Choose {C:attention}#1#{} of up to',
-                    '{C:attention}#2#{} {C:attention}Hyper Definition{}',
-                    '{C:joker}Joker{} cards'
+                    'Choose {C:attention}#1#{} of {C:attention}#2#{}',
+                    'Hyper Definition',
+                    '{C:joker}Joker{} cards',
+                    '{C:inactive}(Only in Hyper Deck){}'
                 }
             }
         }
