@@ -81,9 +81,9 @@ return {
             j_hyperdef_hydra = {
                 name = 'Hydra the Fox',
                 text = {
-                    '{C:chips}+#1#{} Chips, {C:attention}destroy{}',
-                    'a {C:attention}random{} card in hand',
-                    'at start of round'
+                    '{C:chips}+#1#{} Chips, when round',
+                    'begins, draw a card from',
+                    'the deck and {C:attention}destroy{} it'
                 }
             },
             j_hyperdef_manic = {
