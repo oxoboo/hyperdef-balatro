@@ -328,7 +328,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.chips } }
     end,
     -- `context.first_hand_drawn` may be `true` more than once per round.
-    -- Instead, card is removed on `context.setting_blind`
+    -- Instead, events are set on `context.setting_blind`
     calculate = function(self, card, context)
         if context.setting_blind then
             -- variable set by Hydra
