@@ -314,10 +314,9 @@ SMODS.Joker {
     end
 }
 
--- TODO: rewrite calculate()
 SMODS.Joker {
     key = 'hydra',
-    config = { extra = { chips = 100, num_cards_to_destroy = 0 } },
+    config = { extra = { chips = 100 } },
     blueprint_compat = true,
     rarity = 2,
     atlas = atlas_large.key,
@@ -328,52 +327,47 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips } }
     end,
-    update = function(self, card, front)
-        -- `G.STATE == G.STATES.SELECTING_HAND` after all cards are drawn from deck
-        if G.STATE == G.STATES.SELECTING_HAND then
-            if card.ability.extra.num_cards_to_destroy > 0 then
-                local not_dissolved = {}
-                for _, v in pairs(G.hand.cards) do
-                    if not v.dissolve then
-                        table.insert(not_dissolved, v)
-                    end
-                end
-                if #not_dissolved > 0 then
-                    local c = pseudorandom_element(not_dissolved, pseudoseed('hydra'))
-                    c.dissolve = 0
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            c:highlight(true)
-                            play_sound('card1')
-                            return true
-                        end
-                    }))
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.7,
-                        func = function()
-                            c:start_dissolve(nil)
-                            return true
-                        end
-                    }))
-                    local message = pseudorandom_element({
-                        localize('k_hyperdef_hydra1'),
-                        localize('k_hyperdef_hydra2'),
-                        localize('k_hyperdef_hydra3')
-                    })
-                    card_eval_status_text(card, 'extra', nil, nil, nil, { message = message })
-                    card.ability.extra.num_cards_to_destroy = card.ability.extra.num_cards_to_destroy - 1
-                end
-            end
-        end
-    end,
-    -- G.hand is empty when `context.first_hand_drawn = true`. If all cards
-    -- in hand are removed, `context.first_hand_drawn` resets to `true`.
-    -- Instead, the number of cards to be removed will be determined when
-    -- `context.setting_blind = true`, and cards will be removed on update().
+    -- `context.first_hand_drawn` may be `true` more than once per round.
+    -- Instead, card is removed on `context.setting_blind`
     calculate = function(self, card, context)
         if context.setting_blind then
-            card.ability.extra.num_cards_to_destroy = card.ability.extra.num_cards_to_destroy + 1
+            -- variable set by Hydra
+            if not G.GAME.deck_buffer then
+                G.GAME.deck_buffer = 0
+            end
+            if #G.deck.cards - G.GAME.deck_buffer > 0 then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.GAME.deck_buffer = 0
+                        draw_card(G.deck, G.hand, nil, 'up')
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 1.3,
+                            func = function()
+                                G.hand.cards[1]:remove()
+                                play_sound('generic1')
+                                card:juice_up()
+                                attention_text({
+                                    text = pseudorandom_element({
+                                        localize('k_hyperdef_hydra1'),
+                                        localize('k_hyperdef_hydra2'),
+                                        localize('k_hyperdef_hydra3')
+                                    }),
+                                    scale = 0.7,
+                                    hold = 1,
+                                    backdrop_colour = G.C.FILTER,
+                                    align = 'bm',
+                                    major = card,
+                                    offset = { x = 0, y = 0.05 * card.T.h }
+                                })
+                                return true
+                            end
+                        }))
+                        return true
+                    end
+                }))
+                G.GAME.deck_buffer = G.GAME.deck_buffer + 1
+            end
         end
         if context.joker_main then
             return { chips = card.ability.extra.chips }
