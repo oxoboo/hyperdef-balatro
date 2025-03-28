@@ -21,8 +21,8 @@ return {
                 name = 'Shop-Corp Poster',
                 text = {
                     'This Joker gains {C:mult}+#1#{} Mult ',
-                    'when a card from deck is',
-                    '{C:attention}destroyed{}',
+                    'when a card from the',
+                    'deck is {C:attention}destroyed{}',
                     '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
                 }
             },
