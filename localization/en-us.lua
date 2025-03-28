@@ -48,7 +48,6 @@ return {
             j_hyperdef_wooden_kaiju = {
                 name = 'Wooden Kaiju',
                 text = {
-                    'This Joker gains',
                     '{C:mult}+#1#{} Mult per {C:attention}hand{}',
                     'played this round',
                     '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
