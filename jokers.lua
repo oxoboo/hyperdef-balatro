@@ -576,26 +576,38 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = 'stead',
+    config = { extra = { sell_cost = 0 } },
     blueprint_compat = false,
     perishable_compat = false,
     eternal_compat = false,
     rarity = 3,
     atlas = atlas.key,
     pos = { x = 1, y = 2 },
-    cost = 15,
+    cost = 10,
     unlocked = true,
     discovered = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.sell_cost } }
+    end,
+    update = function(self, card, front)
+        card.sell_cost = card.ability.extra.sell_cost
+    end,
     calculate = function(self, card, context)
-        if context.selling_self then
-            local other_joker = nil
+        if context.selling_self and not context.blueprint then
+            local other = nil
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
-                    other_joker = G.jokers.cards[i + 1]
+                    other = G.jokers.cards[i + 1]
                     break
                 end
             end
-            if other_joker then
-                local c = copy_card(other_joker)
+            if other then
+                local c = copy_card(other)
+                if not c.ability.hyperdef_name_append then
+                    c.ability.hyperdef_name_append = 'stead'
+                else
+                    c.ability.hyperdef_name_append = c.ability.hyperdef_name_append .. 'stead'
+                end
                 c:add_to_deck()
                 c:start_materialize()
                 G.jokers:emplace(c)
@@ -603,6 +615,30 @@ SMODS.Joker {
         end
     end
 }
+
+-- Any joker card copied by Stead will have 'stead' appended to its name.
+local generate_UIBox_ability_table_original = Card.generate_UIBox_ability_table
+function Card:generate_UIBox_ability_table()
+    local full_UI_table = generate_UIBox_ability_table_original(self)
+    if self.ability.hyperdef_name_append then
+        local assembled_string = full_UI_table.name[1].config.object.string .. self.ability.hyperdef_name_append
+        full_UI_table.name[1].config.object = DynaText({
+            string = { assembled_string },
+            -- values from localize()
+            colours = { G.C.UI.TEXT_LIGHT },
+            bump = true,
+            silent = true,
+            pop_in = 0,
+            pop_in_rate = 4,
+            maxw = 5,
+            shadow = true,
+            y_offset = -0.6,
+            spacing = math.max(0, 0.32 * (17 - #assembled_string)),
+            scale =  (0.55 - 0.004 * #assembled_string)
+        })
+    end
+    return full_UI_table
+end
 
 SMODS.Joker {
     key = 'low_poly_holly',

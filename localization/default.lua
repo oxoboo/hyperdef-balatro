@@ -129,9 +129,9 @@ return {
             j_hyperdef_stead = {
                 name = 'Stead',
                 text = {
-                    'Sell this card to',
-                    '{C:attention}Duplicate{} Joker to',
-                    'the right of this card'
+                    'Sell this card for',
+                    '{C:money}$#1#{} to {C:attention}Duplicate{}{C:inactive}?{}',
+                    'Joker to its right'
                 }
             },
             j_hyperdef_low_poly_holly = {
