@@ -495,7 +495,7 @@ SMODS.Joker {
                 return { message = localize('k_active_ex') }
             end
         end
-        if context.selling_self and card.ability.extra.rounds_passed >= card.ability.extra.rounds_required then
+        if context.selling_self and not context.blueprint and card.ability.extra.rounds_passed >= card.ability.extra.rounds_required then
             G.E_MANAGER:add_event(Event({
                 func = function()
                     play_sound('timpani')
