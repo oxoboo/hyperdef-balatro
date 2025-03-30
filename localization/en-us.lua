@@ -85,6 +85,14 @@ return {
                     'the deck and {C:attention}destroy{} it'
                 }
             },
+            j_hyperdef_polycule_joker = {
+                name = 'Polycule Joker',
+                text = {
+                    'Retrigger all {C:attention}#1#s{}',
+                    'if at least {C:attention}#2#{} {C:attention}#3#s{}',
+                    'are held or played'
+                }
+            },
             j_hyperdef_manic = {
                 name = 'Manic Scribbles',
                 text = {
