@@ -127,7 +127,7 @@ SMODS.Joker {
         end
         if context.after and not context.blueprint then
             -- Game does not immediately update `G.GAME.hands_played` when
-            -- `context.after = true`, add 1 to hands played
+            -- `context.after == true`, add 1 to hands played
             extra.remaining = extra.every - (((G.GAME.hands_played - extra.hands_played_at_create + 1) % extra.every) + 1)
             if extra.remaining == 0 then
                 local eval = function(card)
