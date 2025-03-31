@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'low_poly_holly',
     blueprint_compat = false,
     rarity = 4,
-    atlas = 'hyperdef',
+    atlas = 'jokers',
     pos = { x = 2, y = 2 },
     soul_pos = { x = 3, y = 2 },
     cost = 20,

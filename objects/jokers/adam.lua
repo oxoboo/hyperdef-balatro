@@ -11,7 +11,7 @@ SMODS.Joker {
     perishable_compat = false,
     eternal_compat = false,
     rarity = 3,
-    atlas = 'hyperdef',
+    atlas = 'jokers',
     pos = { x = 3, y = 1 },
     cost = 3,
     unlocked = true,

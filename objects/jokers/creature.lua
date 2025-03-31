@@ -3,7 +3,7 @@ SMODS.Joker {
     config = { extra = { xmult = 1.75 } },
     blueprint_compat = true,
     rarity = 3,
-    atlas = 'hyperdef',
+    atlas = 'jokers',
     pos = { x = 1, y = 1 },
     cost = 7,
     unlocked = true,

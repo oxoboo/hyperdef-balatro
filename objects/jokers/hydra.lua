@@ -3,7 +3,7 @@ SMODS.Joker {
     config = { extra = { chips = 100 } },
     blueprint_compat = true,
     rarity = 2,
-    atlas = 'hyperdef_large',
+    atlas = 'jokers_large',
     pos = { x = 1, y = 0 },
     cost = 6,
     unlocked = true,

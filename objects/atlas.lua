@@ -1,12 +1,12 @@
 SMODS.Atlas {
-    key = 'hyperdef',
+    key = 'jokers',
     path = 'Jokers.png',
     px = 71,
     py = 95
 }
 
 SMODS.Atlas {
-    key = 'hyperdef_large',
+    key = 'jokers_large',
     path = 'JokersLarge.png',
     px = 142,
     py = 190

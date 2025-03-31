@@ -8,7 +8,7 @@ SMODS.Joker {
     },
     blueprint_compat = true,
     rarity = 1,
-    atlas = 'hyperdef',
+    atlas = 'jokers',
     pos = { x = 2, y = 0 },
     cost = 5,
     unlocked = true,

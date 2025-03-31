@@ -12,7 +12,7 @@ SMODS.Joker {
     },
     blueprint_compat = true,
     rarity = 1,
-    atlas = 'hyperdef_large',
+    atlas = 'jokers_large',
     pos = { x = 2, y = 0 },
     cost = 5,
     unlocked = true,
