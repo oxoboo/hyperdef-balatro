@@ -1,19 +1,5 @@
 local ENABLE_TEST_DECK = false
 
-local atlas_boosters = SMODS.Atlas {
-    key = 'boosters',
-    path = 'boosters.png',
-    px = 71,
-    py = 95
-}
-
-local atlas_enhancers = SMODS.Atlas {
-    key = 'enhancers',
-    path = 'Enhancers.png',
-    px = 71,
-    py = 95
-}
-
 function deck_add_joker(forced_key)
     local card = create_card('Joker', G.jokers, nil, nil, nil, nil, forced_key, 'deck')
     card:add_to_deck()
@@ -45,7 +31,7 @@ end
 SMODS.Back {
     name = 'Hyper Deck',
     key = 'hyper',
-    atlas = atlas_enhancers.key,
+    atlas = 'enhancers',
     pos = { x = 0, y = 0 },
     unlocked = true,
     discovered = true,
@@ -90,65 +76,5 @@ SMODS.Back {
                 return false
             end
         }))
-    end
-}
-
--- This booster is only for the Hyper Deck
-SMODS.Booster {
-    key = 'hyper1',
-    group_key = 'k_hyperdef_hyper_pack',
-    atlas = atlas_boosters.key,
-    pos = { x = 0, y = 0 },
-    config = {
-        extra = 7,
-        choose = 1,
-        jokers = {
-            'j_hyperdef_shopcorp',
-            'j_hyperdef_horse_plinko',
-            'j_hyperdef_wooden_kaiju',
-            'j_hyperdef_magazine',
-            'j_hyperdef_fish_satan',
-            'j_hyperdef_creature',
-            'j_hyperdef_manic'
-        }
-    },
-    discovered = true,
-    cost = 2,
-    weight = 0,
-    loc_vars = function(self, info_queue, card)
-        return { vars = { self.config.choose, self.config.extra } }
-    end,
-    create_card = function(self, card, i)
-        return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'pack')
-    end
-}
-
--- This booster is only for the Hyper Deck
-SMODS.Booster {
-    key = 'hyper2',
-    group_key = 'k_hyperdef_hyper_pack',
-    atlas = atlas_boosters.key,
-    pos = { x = 1, y = 0 },
-    config = {
-        extra = 7,
-        choose = 1,
-        jokers = {
-            'j_hyperdef_buffer_joker',
-            'j_hyperdef_stead_dog',
-            'j_hyperdef_alchemy',
-            'j_hyperdef_hydra',
-            'j_hyperdef_oxoboo',
-            'j_hyperdef_adam',
-            'j_hyperdef_stead'
-        }
-    },
-    discovered = true,
-    cost = 2,
-    weight = 0,
-    loc_vars = function(self, info_queue, card)
-        return { vars = { self.config.choose, self.config.extra } }
-    end,
-    create_card = function(self, card, i)
-        return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'pack')
     end
 }
