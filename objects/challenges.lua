@@ -18,6 +18,25 @@ SMODS.Challenge {
 }
 
 SMODS.Challenge {
+    key = 'hyperdef_polycule2',
+    unlocked = true,
+    jokers = { { id = 'j_hyperdef_polycule_joker', eternal = true } },
+    consumeables = {
+        { id = 'c_cryptid' },
+        { id = 'c_cryptid' }
+    },
+    deck = {
+        type = 'Challenge Deck',
+        cards = {
+            { s = 'S', r = 'Q' },
+            { s = 'D', r = 'Q' },
+            { s = 'C', r = 'Q' },
+            { s = 'H', r = 'Q' }
+        }
+    }
+}
+
+SMODS.Challenge {
     key = 'hyperdef_cerberus',
     unlocked = true,
     jokers = {

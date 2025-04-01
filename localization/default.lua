@@ -176,6 +176,7 @@ return {
     misc = {
         challenge_names = {
             c_hyperdef_polycule1 = 'Polycule I',
+            c_hyperdef_polycule2 = 'Polycule II',
             c_hyperdef_cerberus = 'Cerberus',
             c_hyperdef_instrumentality = 'Instrumentality'
         },
