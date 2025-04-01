@@ -2,8 +2,8 @@ SMODS.Joker {
     key = 'stead_dog',
     config = {
         extra = {
-            percent = 30,
-            decrease = 6
+            percent = 35,
+            decrease = 7
         }
     },
     blueprint_compat = false,
