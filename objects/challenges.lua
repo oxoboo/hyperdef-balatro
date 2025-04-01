@@ -20,6 +20,12 @@ SMODS.Challenge {
 SMODS.Challenge {
     key = 'hyperdef_polycule2',
     unlocked = true,
+    restrictions = {
+        banned_cards = {
+            { id = 'j_shoot_the_moon' },
+            { id = 'j_triboulet' }
+        }
+    },
     jokers = { { id = 'j_hyperdef_polycule_joker', eternal = true } },
     consumeables = {
         { id = 'c_cryptid' },
