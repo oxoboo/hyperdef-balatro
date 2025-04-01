@@ -1,22 +1,30 @@
 return {
     descriptions = {
         Back = {
-            b_hyperdef_hyper = {
-                name = 'Hyper Deck',
-                text = {
-                    'First shop has',
-                    '{C:attention}Hyper Packs{}'
-                }
-            },
             b_hyperdef_test = {
                 name = 'Hyper Definition Test Deck',
                 text = {
                     'This is a Test Deck',
                     'for {C:attention}Hyper Definition{}'
                 }
+            },
+            b_hyperdef_hyper = {
+                name = 'Hyper Deck',
+                text = {
+                    'First shop has',
+                    '{C:attention}Hyper Packs{}'
+                }
             }
         },
         Joker = {
+            j_hyperdef_wooden_kaiju = {
+                name = 'Wooden Kaiju',
+                text = {
+                    '{C:mult}+#1#{} Mult per {C:attention}hand{}',
+                    'played this round',
+                    '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
+                }
+            },
             j_hyperdef_shopcorp = {
                 name = 'Shop-Corp Poster',
                 text = {
@@ -36,6 +44,14 @@ return {
                     '{C:inactive}(Chances cannot be modified){}'
                 }
             },
+            j_hyperdef_stead_dog = {
+                name = 'Stead Dog',
+                text = {
+                    'Start round with',
+                    '{C:attention}#1#%{} of required chips,',
+                    '{C:attention}-#2#%{} per round'
+                }
+            },
             j_hyperdef_buffer_joker = {
                 name = 'Buffer Joker',
                 text = {
@@ -45,28 +61,12 @@ return {
                     '{C:inactive}#3#{}'
                 }
             },
-            j_hyperdef_wooden_kaiju = {
-                name = 'Wooden Kaiju',
+            j_hyperdef_polycule_joker = {
+                name = 'Polycule Joker',
                 text = {
-                    '{C:mult}+#1#{} Mult per {C:attention}hand{}',
-                    'played this round',
-                    '{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}'
-                }
-            },
-            j_hyperdef_stead_dog = {
-                name = 'Stead Dog',
-                text = {
-                    'Start round with',
-                    '{C:attention}#1#%{} of required chips,',
-                    '{C:attention}-#2#%{} per round'
-                }
-            },
-            j_hyperdef_magazine  = {
-                name = 'Magazine Subscription',
-                text = {
-                    'When {C:attention}Blind{} is selected, spend',
-                    '{C:money}$#1#{} and create a {C:spectral}Spectral{} card',
-                    '{C:inactive}(Must have room)'
+                    'Retrigger all {C:attention}#1#s{}',
+                    'if at least {C:attention}#2#{} {C:attention}#3#s{}',
+                    'are held or played'
                 }
             },
             j_hyperdef_alchemy = {
@@ -85,20 +85,21 @@ return {
                     'the deck and {C:attention}destroy{} it'
                 }
             },
-            j_hyperdef_polycule_joker = {
-                name = 'Polycule Joker',
+            j_hyperdef_magazine  = {
+                name = 'Magazine Subscription',
                 text = {
-                    'Retrigger all {C:attention}#1#s{}',
-                    'if at least {C:attention}#2#{} {C:attention}#3#s{}',
-                    'are held or played'
+                    'When {C:attention}Blind{} is selected, spend',
+                    '{C:money}$#1#{} and create a {C:spectral}Spectral{} card',
+                    '{C:inactive}(Must have room)'
                 }
             },
-            j_hyperdef_manic = {
-                name = 'Manic Scribbles',
+            j_hyperdef_adam = {
+                name = 'Adam',
                 text = {
-                    'Randomly change {C:attention}rank{} and',
-                    '{C:attention}suit{} of each card in',
-                    'first {C:attention}discard{} of round'
+                    'After {C:attention}#1#{} rounds, sell',
+                    'this card to create',
+                    'a {C:legendary,E:1}Legendary{} Joker',
+                    '{C:inactive}(Currently {C:attention}#2#{}{C:inactive}/#3#){}'
                 }
             },
             j_hyperdef_fish_satan = {
@@ -108,12 +109,12 @@ return {
                     'has a scoring {C:attention}#2#{}',
                 }
             },
-            j_hyperdef_creature = {
-                name = 'Creature',
+            j_hyperdef_manic = {
+                name = 'Manic Scribbles',
                 text = {
-                    'Each {C:attention}Enhanced{}{C:inactive}d{} card',
-                    'gives {X:mult,C:white} X#1# {} Mult{C:inactive}t{}',
-                    'when scored {C:inactive}:3{}'
+                    'Randomly change {C:attention}rank{} and',
+                    '{C:attention}suit{} of each card in',
+                    'first {C:attention}discard{} of round'
                 }
             },
             j_hyperdef_oxoboo = {
@@ -125,13 +126,12 @@ return {
                     '{C:attention}first hand{} of round'
                 }
             },
-            j_hyperdef_adam = {
-                name = 'Adam',
+            j_hyperdef_creature = {
+                name = 'Creature',
                 text = {
-                    'After {C:attention}#1#{} rounds, sell',
-                    'this card to create',
-                    'a {C:legendary,E:1}Legendary{} Joker',
-                    '{C:inactive}(Currently {C:attention}#2#{}{C:inactive}/#3#){}'
+                    'Each {C:attention}Enhanced{}{C:inactive}d{} card',
+                    'gives {X:mult,C:white} X#1# {} Mult{C:inactive}t{}',
+                    'when scored {C:inactive}:3{}'
                 }
             },
             j_hyperdef_stead = {
