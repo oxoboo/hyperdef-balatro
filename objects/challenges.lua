@@ -1,5 +1,5 @@
 SMODS.Challenge {
-    key = 'hyperdef_polycule',
+    key = 'hyperdef_polycule1',
     unlocked = true,
     jokers = { { id = 'j_hyperdef_low_poly_holly', eternal = true } },
     consumeables = {
