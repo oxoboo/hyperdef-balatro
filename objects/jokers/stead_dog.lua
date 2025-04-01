@@ -41,7 +41,7 @@ SMODS.Joker {
             card.ability.extra.percent = card.ability.extra.percent - card.ability.extra.decrease
             if card.ability.extra.percent > 0 then
                 return {
-                    message = '-' .. card.ability.extra.decrease,
+                    message = '-' .. card.ability.extra.decrease .. '%',
                     colour = G.C.BLUE
                 }
             else
