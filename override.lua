@@ -1,4 +1,4 @@
--- Any joker card copied by Stead will have 'stead' appended to its name.
+-- Any joker card copied by Stead will have 'stead' appended to the text shown.
 local generate_UIBox_ability_table_original = Card.generate_UIBox_ability_table
 function Card:generate_UIBox_ability_table()
     local full_UI_table = generate_UIBox_ability_table_original(self)
