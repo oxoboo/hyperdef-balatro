@@ -26,7 +26,6 @@ SMODS.Joker {
         if context.before then
             card.ability.extra.num_rank_played = 0
             for _, v in pairs(G.play.cards) do
-                print(#G.play.cards)
                 if v:get_id() == card.ability.extra.id then
                     card.ability.extra.num_rank_played = card.ability.extra.num_rank_played + 1
                 end
