@@ -3,8 +3,9 @@ local generate_UIBox_ability_table_original = Card.generate_UIBox_ability_table
 function Card:generate_UIBox_ability_table()
     local full_UI_table = generate_UIBox_ability_table_original(self)
     if self.ability.hyperdef_name_append then
-        local assembled_string = full_UI_table.name[1].config.object.string .. self.ability.hyperdef_name_append
-        full_UI_table.name[1].config.object = DynaText({
+        -- NOTE: In Steamodded 1.0.0~BETA-0301, the object is `full_UI_table.name[1].config.object`
+        local assembled_string = full_UI_table.name[1].nodes[1].config.object.string .. self.ability.hyperdef_name_append
+        full_UI_table.name[1].nodes[1].config.object = DynaText({
             string = { assembled_string },
             -- values from localize()
             colours = { G.C.UI.TEXT_LIGHT },
