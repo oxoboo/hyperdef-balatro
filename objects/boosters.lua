@@ -33,7 +33,7 @@ SMODS.Booster {
 local hyper2_jokers = {
     'j_hyperdef_stead_dog',
     'j_hyperdef_buffer_joker',
-    'j_hyperdef_polycule_joker',
+    'j_hyperdef_polyqueen',
     'j_hyperdef_alchemy',
     'j_hyperdef_hydra',
     'j_hyperdef_adam',

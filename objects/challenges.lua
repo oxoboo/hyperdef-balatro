@@ -26,7 +26,7 @@ SMODS.Challenge {
             { id = 'j_triboulet' }
         }
     },
-    jokers = { { id = 'j_hyperdef_polycule_joker', eternal = true } },
+    jokers = { { id = 'j_hyperdef_polyqueen', eternal = true } },
     consumeables = {
         { id = 'c_cryptid' },
         { id = 'c_cryptid' }

@@ -4,7 +4,7 @@ local file_names_jokers = {
     'horse_plinko',
     'stead_dog',
     'buffer_joker',
-    'polycule_joker',
+    'polyqueen',
     'alchemy',
     'hydra',
     'magazine',

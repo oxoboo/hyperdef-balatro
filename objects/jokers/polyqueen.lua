@@ -1,5 +1,5 @@
 SMODS.Joker {
-    key = 'polycule_joker',
+    key = 'polyqueen',
     config = {
         extra = {
             value = 'Queen',

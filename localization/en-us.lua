@@ -61,8 +61,8 @@ return {
                     '{C:inactive}#3#{}'
                 }
             },
-            j_hyperdef_polycule_joker = {
-                name = 'Polycule Joker',
+            j_hyperdef_polyqueen = {
+                name = 'Polyqueen',
                 text = {
                     'Retrigger all {C:attention}#1#s{}',
                     'if at least {C:attention}#2#{} {C:attention}#3#s{}',
