@@ -11,8 +11,6 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips } }
     end,
-    -- `context.first_hand_drawn` may be `true` more than once per round.
-    -- Instead, events are set on `context.setting_blind`
     calculate = function(self, card, context)
         if context.setting_blind then
             -- variable set by Hydra
