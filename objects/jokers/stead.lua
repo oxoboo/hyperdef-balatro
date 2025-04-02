@@ -28,10 +28,15 @@ SMODS.Joker {
             end
             if other then
                 local c = copy_card(other)
+                local append = 'stead'
+                -- carry over the string from this card, if there is one
+                if card.ability.hyperdef_name_append  then
+                    append = card.ability.hyperdef_name_append .. 'stead'
+                end
                 if not c.ability.hyperdef_name_append then
-                    c.ability.hyperdef_name_append = 'stead'
+                    c.ability.hyperdef_name_append = append
                 else
-                    c.ability.hyperdef_name_append = c.ability.hyperdef_name_append .. 'stead'
+                    c.ability.hyperdef_name_append = c.ability.hyperdef_name_append .. append
                 end
                 c:add_to_deck()
                 c:start_materialize()
