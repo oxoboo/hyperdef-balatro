@@ -12,7 +12,7 @@ SMODS.Joker {
     eternal_compat = false,
     rarity = 3,
     atlas = 'jokers',
-    pos = { x = 3, y = 1 },
+    pos = { x = 0, y = 1 },
     cost = 3,
     unlocked = true,
     discovered = true,
