@@ -82,7 +82,7 @@ return {
                 text = {
                     '{C:chips}+#1#{} Chips, when round',
                     'begins, draw a card from',
-                    'the deck and {C:attention}destroy{} it'
+                    'your deck and {C:attention}destroy{} it'
                 }
             },
             j_hyperdef_magazine  = {
