@@ -9,9 +9,9 @@
   "priority": 0,
   "badge_colour": "8700FF",
   "badge_text_colour": "D866FF",
-  "version": "0.5.0~ALPHA",
+  "version": "0.5.0",
   "dependencies": [
-    "Steamodded (>=1.0.0~BETA-0301a)",
+    "Steamodded (>=1.0.0~BETA-0305c)",
     "Lovely (>=0.6)",
     "Balatro (>=1.0.1o)"
   ]
