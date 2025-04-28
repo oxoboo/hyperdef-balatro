@@ -25,17 +25,17 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.first_hand_drawn and not context.blueprint then
-            local chips = G.GAME.blind.chips * (card.ability.extra.percent / 100)
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    G.GAME.chips = chips
-                    return true
+                    if G.GAME.chips and G.GAME.blind.chips then
+                        local chips = G.GAME.blind.chips * (card.ability.extra.percent / 100) - G.GAME.chips
+                        G.GAME.chips = G.GAME.chips + chips
+                        card_eval_status_text(card, 'extra', nil, nil, nil, { message = tostring(chips), colour = G.C.CHIPS })
+                        return true
+                    end
+                    return false
                 end
             }))
-            return {
-                message = '=' .. chips,
-                colour = G.C.BLUE
-            }
         end
         if context.end_of_round and not context.repetiton and not context.blueprint and context.game_over == false then
             card.ability.extra.percent = card.ability.extra.percent - card.ability.extra.decrease
