@@ -31,6 +31,7 @@ SMODS.Joker {
                         local chips = G.GAME.blind.chips * (card.ability.extra.percent / 100) - G.GAME.chips
                         G.GAME.chips = G.GAME.chips + chips
                         card_eval_status_text(card, 'extra', nil, nil, nil, { message = tostring(chips), colour = G.C.CHIPS })
+                        save_run()
                         return true
                     end
                     return false
