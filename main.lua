@@ -5,6 +5,7 @@ local file_names_jokers = {
     'stead_dog',
     'buffer_joker',
     'polyqueen',
+    'half_joker',
     'alchemy',
     'hydra',
     'magazine',

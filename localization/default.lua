@@ -69,6 +69,14 @@ return {
                     'are held or played'
                 }
             },
+            j_hyperdef_half_joker = {
+                name = 'Half Joker',
+                text = {
+                    '{C:mult}+#1#{} Mult if played',
+                    'hand contains {C:attention}#2#{} or',
+                    'more scoring cards'
+                }
+            },
             j_hyperdef_alchemy = {
                 name = 'Alchemy',
                 text = {
