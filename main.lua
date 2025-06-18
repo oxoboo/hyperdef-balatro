@@ -18,6 +18,7 @@ local file_names_jokers = {
     'low_poly_holly'
 }
 
+SMODS.load_file('objects/consumables/cutaway.lua')()
 SMODS.load_file('objects/atlas.lua')()
 SMODS.load_file('objects/boosters.lua')()
 SMODS.load_file('objects/challenges.lua')()

@@ -160,6 +160,15 @@ return {
                 }
             }
         },
+        Spectral = {
+            c_hyperdef_cutaway = {
+                name = 'Cutaway',
+                text = {
+                    '{C:attention}#1#{} Ante, sets',
+                    'money to {C:money}$#2#{}'
+                }
+            }
+        },
         Other = {
             p_hyperdef_hyper1 = {
                 name = 'Hyper Pack 1',

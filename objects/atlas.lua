@@ -25,3 +25,10 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
+
+SMODS.Atlas {
+    key = 'tarots_large',
+    path = 'TarotsLarge.png',
+    px = 142,
+    py = 190
+}
