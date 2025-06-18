@@ -5,7 +5,6 @@ SMODS.Joker {
     atlas = 'jokers',
     pos = { x = 3, y = 1 },
     cost = 7,
-    unlocked = true,
     discovered = true,
     calculate = function(self, card, context)
         if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.current_round.hands_played == 1 then

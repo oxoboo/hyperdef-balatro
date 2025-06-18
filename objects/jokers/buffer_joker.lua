@@ -13,7 +13,6 @@ SMODS.Joker {
     atlas = 'jokers',
     pos = { x = 2, y = 0 },
     cost = 4,
-    unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue, card)
         local remaining_message = localize {

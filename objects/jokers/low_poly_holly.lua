@@ -6,7 +6,6 @@ SMODS.Joker {
     pos = { x = 1, y = 2 },
     soul_pos = { x = 2, y = 2 },
     cost = 20,
-    unlocked = true,
     discovered = true,
     calculate = function(self, card, context)
         if context.before and not context.repetition and not context.blueprint then

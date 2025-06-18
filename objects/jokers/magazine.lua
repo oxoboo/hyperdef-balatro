@@ -6,7 +6,6 @@ SMODS.Joker {
     atlas = 'jokers_large',
     pos = { x = 3, y = 0 },
     cost = 1,
-    unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.spend } }

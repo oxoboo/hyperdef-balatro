@@ -12,7 +12,6 @@ SMODS.Joker {
     atlas = 'jokers',
     pos = { x = 1, y = 1 },
     cost = 8,
-    unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue, card)
         return {

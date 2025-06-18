@@ -6,7 +6,6 @@ SMODS.Joker {
     atlas = 'jokers',
     pos = { x = 2, y = 1 },
     cost = 7,
-    unlocked = true,
     discovered = true,
     calculate = function(self, card, context)
         if context.first_hand_drawn and not context.blueprint then

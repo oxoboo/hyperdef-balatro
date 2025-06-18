@@ -33,7 +33,6 @@ SMODS.Back {
     key = 'hyper',
     atlas = 'enhancers',
     pos = { x = 0, y = 0 },
-    unlocked = true,
     discovered = true,
     apply = function(self, back)
         -- Replace boosters with Hyper Packs in the first shop
