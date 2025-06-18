@@ -1,6 +1,8 @@
 SMODS.Challenge {
     key = 'hyperdef_polycule1',
-    unlocked = true,
+    unlocked = function()
+        return true
+    end,
     jokers = { { id = 'j_hyperdef_low_poly_holly', eternal = true } },
     consumeables = {
         { id = 'c_familiar' },
@@ -19,7 +21,9 @@ SMODS.Challenge {
 
 SMODS.Challenge {
     key = 'hyperdef_polycule2',
-    unlocked = true,
+    unlocked = function()
+        return true
+    end,
     restrictions = {
         banned_cards = {
             { id = 'j_shoot_the_moon' },
@@ -44,7 +48,9 @@ SMODS.Challenge {
 
 SMODS.Challenge {
     key = 'hyperdef_cerberus',
-    unlocked = true,
+    unlocked = function()
+        return true
+    end,
     jokers = {
         { id = 'j_hyperdef_hydra', edition = 'negative', eternal = true },
         { id = 'j_hyperdef_hydra', edition = 'negative', eternal = true },
@@ -55,7 +61,9 @@ SMODS.Challenge {
 
 SMODS.Challenge {
     key = 'hyperdef_instrumentality',
-    unlocked = true,
+    unlocked = function()
+        return true
+    end,
     rules = {
         custom = {
             { id = 'set_joker_slots_ante', value = 5 },
