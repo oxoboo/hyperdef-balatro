@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'horse_plinko',
     config = {
         extra = {
-            chances_outcomes = {
+            weight_outcomes = {
                 { 2, 1 },
                 { 2, 50 },
                 { 2, 100 },
@@ -19,10 +19,10 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         local vars = {}
         local num_outcomes = 0
-        for _, v in pairs(card.ability.extra.chances_outcomes) do
+        for _, v in pairs(card.ability.extra.weight_outcomes) do
             num_outcomes = num_outcomes + v[1]
         end
-        for _, v in pairs(card.ability.extra.chances_outcomes) do
+        for _, v in pairs(card.ability.extra.weight_outcomes) do
             table.insert(vars, v[1])
             table.insert(vars, num_outcomes)
             table.insert(vars, v[2])
@@ -32,7 +32,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             local outcomes = {}
-            for _, v in pairs(card.ability.extra.chances_outcomes) do
+            for _, v in pairs(card.ability.extra.weight_outcomes) do
                 for i = 1, v[1] do
                     table.insert(outcomes, v[2])
                 end
