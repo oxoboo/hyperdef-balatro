@@ -1,10 +1,28 @@
 local ENABLE_TEST_DECK = false
 
-function deck_add_joker(forced_key)
+local function deck_add_joker(forced_key)
     local card = create_card('Joker', G.jokers, nil, nil, nil, nil, forced_key, 'deck')
     card:add_to_deck()
     card:start_materialize()
     G.jokers:emplace(card)
+    return card
+end
+
+-- Boosters can be added after G.shop_booster is initiated
+local function shop_add_booster(forced_key)
+    local booster = Card(
+        G.shop_booster.T.x + G.shop_booster.T.w / 2,
+        G.shop_booster.T.y,
+        G.CARD_W * 1.27,
+        G.CARD_H * 1.27,
+        G.P_CARDS.empty,
+        G.P_CENTERS[forced_key],
+        { bypass_discovery_center = true, bypass_discovery_ui = true }
+    )
+    booster:start_materialize()
+    G.shop_booster:emplace(booster)
+    create_shop_card_ui(booster)
+    return booster
 end
 
 if ENABLE_TEST_DECK then
@@ -45,30 +63,8 @@ SMODS.Back {
                         for i = 1, #G.shop_booster.cards do
                             G.shop_booster.cards[i] = nil
                         end
-                        local booster1 = Card(
-                            G.shop_booster.T.x + G.shop_booster.T.w / 2,
-                            G.shop_booster.T.y,
-                            G.CARD_W * 1.27,
-                            G.CARD_H * 1.27,
-                            G.P_CARDS.empty,
-                            G.P_CENTERS['p_hyperdef_hyper_normal'],
-                            { bypass_discovery_center = true, bypass_discovery_ui = true }
-                        )
-                        local booster2 = Card(
-                            G.shop_booster.T.x + G.shop_booster.T.w / 2,
-                            G.shop_booster.T.y,
-                            G.CARD_W * 1.27,
-                            G.CARD_H * 1.27,
-                            G.P_CARDS.empty,
-                            G.P_CENTERS['p_hyperdef_hyper_mega'],
-                            { bypass_discovery_center = true, bypass_discovery_ui = true }
-                        )
-                        booster1:start_materialize()
-                        booster2:start_materialize()
-                        G.shop_booster:emplace(booster1)
-                        G.shop_booster:emplace(booster2)
-                        create_shop_card_ui(booster1)
-                        create_shop_card_ui(booster2)
+                        shop_add_booster('p_hyperdef_hyper_normal')
+                        shop_add_booster('p_hyperdef_hyper_mega')
                         return true
                     end
                 end
