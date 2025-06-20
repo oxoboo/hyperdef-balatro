@@ -170,22 +170,20 @@ return {
             }
         },
         Other = {
-            p_hyperdef_hyper1 = {
-                name = 'Hyper Pack 1',
+            p_hyperdef_hyper_normal = {
+                name = 'Hyper Pack',
                 text = {
-                    'Choose {C:attention}#1#{} of {C:attention}#2#{}',
-                    'Hyper Definition',
-                    '{C:joker}Joker{} cards',
-                    '{C:inactive}(Only in Hyper Deck){}'
+                    'Choose {C:attention}#1#{} of up to',
+                    '{C:attention}#2#{} Hyper Definition',
+                    '{C:joker}Joker{} cards'
                 }
             },
-            p_hyperdef_hyper2 = {
-                name = 'Hyper Pack 2',
+            p_hyperdef_hyper_mega = {
+                name = 'Mega Hyper Pack',
                 text = {
-                    'Choose {C:attention}#1#{} of {C:attention}#2#{}',
-                    'Hyper Definition',
-                    '{C:joker}Joker{} cards',
-                    '{C:inactive}(Only in Hyper Deck){}'
+                    'Choose {C:attention}#1#{} of up to',
+                    '{C:attention}#2#{} Hyper Definition',
+                    '{C:joker}Joker{} cards'
                 }
             }
         }

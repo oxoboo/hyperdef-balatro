@@ -51,7 +51,7 @@ SMODS.Back {
                             G.CARD_W * 1.27,
                             G.CARD_H * 1.27,
                             G.P_CARDS.empty,
-                            G.P_CENTERS['p_hyperdef_hyper1'],
+                            G.P_CENTERS['p_hyperdef_hyper_normal'],
                             { bypass_discovery_center = true, bypass_discovery_ui = true }
                         )
                         local booster2 = Card(
@@ -60,7 +60,7 @@ SMODS.Back {
                             G.CARD_W * 1.27,
                             G.CARD_H * 1.27,
                             G.P_CARDS.empty,
-                            G.P_CENTERS['p_hyperdef_hyper2'],
+                            G.P_CENTERS['p_hyperdef_hyper_mega'],
                             { bypass_discovery_center = true, bypass_discovery_ui = true }
                         )
                         booster1:start_materialize()

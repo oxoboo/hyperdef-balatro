@@ -1,64 +1,100 @@
-local hyper1_jokers = {
-    'j_hyperdef_wooden_kaiju',
-    'j_hyperdef_shopcorp',
-    'j_hyperdef_horse_plinko',
-    'j_hyperdef_magazine',
-    'j_hyperdef_fish_satan',
-    'j_hyperdef_manic',
-    'j_hyperdef_creature'
-}
+-- Get keys of all Hyper Definition cards except Legendary cards. If the
+-- player has a Showman, include keys of duplicate cards.
+function hyper_pack_get_keys()
+    local keys_owned = {}
+    for _, v in pairs(G.jokers.cards) do
+        table.insert(keys_owned, v.config.center.key)
+    end
+    local keys = {}
+    for k, v1 in pairs(SMODS.Centers) do
+        if string.sub(k, 1, #"j_hyperdef") == "j_hyperdef" and v1.rarity < 4 then
+            local do_include = true
+            local allow_duplicates = false
+            for _, v in pairs(G.jokers.cards) do
+                if v.config.center.key == 'j_ring_master' then
+                    allow_duplicates = true
+                    break
+                end
+            end
+            if allow_duplicates == false then
+                for _, v2 in pairs(keys_owned) do
+                    if v2 == k then
+                        do_include = false
+                        break
+                    end
+                end
+            end
+            if do_include then
+	            table.insert(keys, k)
+            end
+        end
+    end
+    return keys
+end
 
--- This booster is only for the Hyper Deck
+function table_remove_key(t, key)
+    local i = 1
+    while t[i] do
+        if key == t[i] then
+            table.remove(t, i)
+        end
+        i = i + 1
+    end
+end
+
+function hyper_pack_create_card(booster, i, key_append)
+    if i == 1 then
+        booster.config.keys_spawn = hyper_pack_get_keys()
+    end
+    local key = pseudorandom_element(booster.config.keys_spawn, pseudoseed(key_append))
+    table_remove_key(booster.config.keys_spawn, key)
+    if key then
+	    return create_card('Joker', G.jokers, nil, nil, nil, nil, key, key_append)
+	else
+	    -- create this card if no cards should spawn
+		return create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_hyperdef_wooden_kaiju', key_append)
+    end
+end
+
+-- Hyper Packs are much rarer than Buffoon Packs
 SMODS.Booster {
-    key = 'hyper1',
+    key = 'hyper_normal',
     group_key = 'k_hyperdef_hyper_pack',
     atlas = 'boosters',
     pos = { x = 0, y = 0 },
     config = {
-        extra = #hyper1_jokers,
+        extra = 4,
         choose = 1,
-        jokers = hyper1_jokers
+        keys_spawn = {}
     },
     discovered = true,
-    cost = 2,
-    weight = 0,
+    cost = 4,
+    weight = 0.06,
     loc_vars = function(self, info_queue, card)
         return { vars = { self.config.choose, self.config.extra } }
     end,
     create_card = function(self, card, i)
-        return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'hyper1')
+        return hyper_pack_create_card(self, i, 'hyper_pack_normal')
     end
 }
 
-local hyper2_jokers = {
-    'j_hyperdef_stead_dog',
-    'j_hyperdef_buffer_joker',
-    'j_hyperdef_polyqueen',
-    'j_hyperdef_alchemy',
-    'j_hyperdef_hydra',
-    'j_hyperdef_adam',
-    'j_hyperdef_oxoboo',
-    'j_hyperdef_stead'
-}
-
--- This booster is only for the Hyper Deck
 SMODS.Booster {
-    key = 'hyper2',
+    key = 'hyper_mega',
     group_key = 'k_hyperdef_hyper_pack',
     atlas = 'boosters',
     pos = { x = 1, y = 0 },
     config = {
-        extra = #hyper2_jokers,
-        choose = 1,
-        jokers = hyper2_jokers
+        extra = 8,
+        choose = 2,
+        keys_spawn = {}
     },
     discovered = true,
-    cost = 2,
-    weight = 0,
+    cost = 8,
+    weight = 0.015,
     loc_vars = function(self, info_queue, card)
         return { vars = { self.config.choose, self.config.extra } }
     end,
     create_card = function(self, card, i)
-        return create_card('Joker', G.jokers, nil, nil, nil, nil, self.config.jokers[i], 'hyper2')
+        return hyper_pack_create_card(self, i, 'hyper_pack_mega')
     end
 }
