@@ -11,8 +11,8 @@ return {
             b_hyperdef_hyper = {
                 name = 'Hyper Deck',
                 text = {
-                    'First shop has',
-                    '{C:attention}Hyper Packs{}'
+                    'Add a {C:attention}Hyper Definition{}',
+                    'Joker card to each shop'
                 }
             }
         },

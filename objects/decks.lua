@@ -1,10 +1,10 @@
 local ENABLE_TEST_DECK = false
 
-local function deck_add_joker(forced_key)
-    local card = create_card('Joker', G.jokers, nil, nil, nil, nil, forced_key, 'deck')
+local function add_joker(forced_key, card_area, key_append)
+    local card = create_card('Joker', card_area, nil, nil, nil, nil, forced_key, key_append)
     card:add_to_deck()
     card:start_materialize()
-    G.jokers:emplace(card)
+    card_area:emplace(card)
     return card
 end
 
@@ -38,7 +38,7 @@ if ENABLE_TEST_DECK then
                     -- ease_dollars(10)
                     -- G.GAME.round_resets.hands = 5
                     -- G.GAME.round_resets.discards = 4
-                    -- deck_add_joker('j_hyperdef_adam')
+                    -- add_joker('j_hyperdef_adam', G.jokers, 'deck')
                     return true
                 end
             }))
@@ -52,24 +52,31 @@ SMODS.Back {
     atlas = 'enhancers',
     pos = { x = 0, y = 0 },
     discovered = true,
-    apply = function(self, back)
-        -- Replace boosters with Hyper Packs in the first shop
-        G.E_MANAGER:add_event(Event({
-            blocking = false,
-            blockable = false,
-            func = function()
-                if G.shop_booster then
-                    if G.shop_booster.cards[#G.shop_booster.cards] then
-                        for i = 1, #G.shop_booster.cards do
-                            G.shop_booster.cards[i] = nil
-                        end
-                        shop_add_booster('p_hyperdef_hyper_normal')
-                        shop_add_booster('p_hyperdef_hyper_mega')
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.repetition and context.game_over == false then
+            G.E_MANAGER:add_event(Event({
+                blocking = false,
+                func = function()
+                    if G.shop_jokers and G.shop_jokers.cards and #G.shop_jokers.cards >= G.GAME.shop.joker_max then
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.4,
+                            func = function()
+                                local key = pseudorandom_element(hyperdef_shop_get_keys(), pseudoseed('deck'))
+     							create_shop_card_ui(add_joker(key, G.shop_jokers, 'deck'))
+                                G.GAME.shop.joker_max = G.GAME.shop.joker_max + 1
+                                G.shop_jokers.config.card_limit = G.GAME.shop.joker_max
+                                G.shop_jokers.T.w = G.GAME.shop.joker_max * 1.01 * G.CARD_W
+                                G.shop:recalculate()
+                                G.GAME.shop.joker_max = G.GAME.shop.joker_max - 1
+                                return true
+                            end
+                        }))
                         return true
                     end
+                    return false
                 end
-                return false
-            end
-        }))
+            }))
+        end
     end
 }
