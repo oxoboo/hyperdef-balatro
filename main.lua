@@ -1,4 +1,23 @@
-local file_names_jokers = {
+local function load_objects(dir, t_names)
+    for _, v in pairs(t_names) do
+        local path = 'objects/' .. dir .. '/' .. v .. '.lua'
+        local load_obj = SMODS.load_file(path)
+        if load_obj then
+            load_obj()
+        else
+            sendErrorMessage('Failed to load \'' .. path .. '\'', 'Hyper Definition')
+        end
+    end
+end
+
+SMODS.load_file('global_functions.lua')()
+SMODS.load_file('objects/consumables/cutaway.lua')()
+SMODS.load_file('objects/atlas.lua')()
+SMODS.load_file('objects/boosters.lua')()
+SMODS.load_file('objects/challenges.lua')()
+SMODS.load_file('override.lua')()
+load_objects('decks', { 'test', 'hyper' })
+load_objects('jokers', {
     'wooden_kaiju',
     'shopcorp',
     'horse_plinko',
@@ -16,35 +35,4 @@ local file_names_jokers = {
     'creature',
     'stead',
     'low_poly_holly'
-}
-
-local file_names_decks = {
-    'test',
-    'hyper'
-}
-
-SMODS.load_file('global_functions.lua')()
-SMODS.load_file('objects/consumables/cutaway.lua')()
-SMODS.load_file('objects/atlas.lua')()
-SMODS.load_file('objects/boosters.lua')()
-SMODS.load_file('objects/challenges.lua')()
-SMODS.load_file('override.lua')()
-for _, v in pairs(file_names_decks) do
-    local path = 'objects/decks/' .. v .. '.lua'
-    local load_deck = SMODS.load_file(path)
-    if load_deck then
-        load_deck()
-    else
-        print('Hyper Definition: Failed to load \'' .. path .. '\'')
-    end
-end
-
-for _, v in pairs(file_names_jokers) do
-    local path = 'objects/jokers/' .. v .. '.lua'
-    local load_joker = SMODS.load_file(path)
-    if load_joker then
-        load_joker()
-    else
-        print('Hyper Definition: Failed to load \'' .. path .. '\'')
-    end
-end
+})
