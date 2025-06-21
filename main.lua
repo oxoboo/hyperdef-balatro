@@ -18,13 +18,27 @@ local file_names_jokers = {
     'low_poly_holly'
 }
 
+local file_names_decks = {
+    'test',
+    'hyper'
+}
+
 SMODS.load_file('global_functions.lua')()
 SMODS.load_file('objects/consumables/cutaway.lua')()
 SMODS.load_file('objects/atlas.lua')()
 SMODS.load_file('objects/boosters.lua')()
 SMODS.load_file('objects/challenges.lua')()
-SMODS.load_file('objects/decks.lua')()
 SMODS.load_file('override.lua')()
+for _, v in pairs(file_names_decks) do
+    local path = 'objects/decks/' .. v .. '.lua'
+    local load_deck = SMODS.load_file(path)
+    if load_deck then
+        load_deck()
+    else
+        print('Hyper Definition: Failed to load \'' .. path .. '\'')
+    end
+end
+
 for _, v in pairs(file_names_jokers) do
     local path = 'objects/jokers/' .. v .. '.lua'
     local load_joker = SMODS.load_file(path)
