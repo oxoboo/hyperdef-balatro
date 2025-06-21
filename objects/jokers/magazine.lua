@@ -15,9 +15,7 @@ SMODS.Joker {
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    local c = create_card('Spectral', G.consumeables, nil, nil, nil, nil, nil, 'mag')
-                    c:add_to_deck()
-                    G.consumeables:emplace(c)
+                    SMODS.add_card({ set = 'Spectral', area = G.consumeables, key_append = 'mag' })
                     G.GAME.consumeable_buffer = 0
                     return true
                 end

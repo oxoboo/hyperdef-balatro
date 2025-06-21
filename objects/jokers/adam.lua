@@ -40,15 +40,13 @@ SMODS.Joker {
             G.E_MANAGER:add_event(Event({
                 func = function()
                     play_sound('timpani')
-                    local c = create_card('Joker', G.jokers, true, nil, nil, nil, nil, 'adam')
+                    local c = SMODS.add_card({ set = 'Joker', area = G.jokers, legendary = true, key_append = 'adam' })
                     -- Secret part of ability: If Adam is negative, make the legendary joker negative too
                     if card.edition then
                         if card.edition.negative then
                             c:set_edition('e_negative', true)
                         end
                     end
-                    c:add_to_deck()
-                    G.jokers:emplace(c)
                     return true
                 end
             }))

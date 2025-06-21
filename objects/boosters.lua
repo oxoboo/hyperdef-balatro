@@ -15,10 +15,10 @@ local function hyper_pack_create_card(booster, i, key_append)
     local key = pseudorandom_element(booster.config.keys_spawn, pseudoseed(key_append))
     table_remove_key(booster.config.keys_spawn, key)
     if key then
-	    return create_card('Joker', G.jokers, nil, nil, nil, nil, key, key_append)
+	    return SMODS.create_card({ set = 'Joker', area = G.jokers, key = key, key_append = key_append })
 	else
 	    -- create this card if no cards should spawn
-		return create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_hyperdef_wooden_kaiju', key_append)
+		return SMODS.create_card({ set = 'Joker', area = G.jokers, key = 'j_hyperdef_wooden_kaiju', key_append = key_append })
     end
 end
 

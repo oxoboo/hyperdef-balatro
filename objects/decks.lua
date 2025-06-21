@@ -1,13 +1,5 @@
 local ENABLE_TEST_DECK = false
 
-local function add_joker(forced_key, card_area, key_append)
-    local card = create_card('Joker', card_area, nil, nil, nil, nil, forced_key, key_append)
-    card:add_to_deck()
-    card:start_materialize()
-    card_area:emplace(card)
-    return card
-end
-
 -- Can be added to any card area for testing.
 local function add_booster(forced_key, card_area)
     local booster = Card(
@@ -37,7 +29,7 @@ if ENABLE_TEST_DECK then
                     -- ease_dollars(10)
                     -- G.GAME.round_resets.hands = 5
                     -- G.GAME.round_resets.discards = 4
-                    -- add_joker('j_hyperdef_adam', G.jokers, 'deck')
+                    -- SMODS.add_card({ set = 'Joker', area = G.jokers, key = 'j_hyperdef_adam', key_append = 'deck' })
                     -- add_booster('p_hyperdef_hyper_normal', G.consumeables)
                     return true
                 end
@@ -62,8 +54,12 @@ SMODS.Back {
                             trigger = 'after',
                             delay = 0.4,
                             func = function()
-                                local key = pseudorandom_element(hyperdef_shop_get_keys(), pseudoseed('deck'))
-     							create_shop_card_ui(add_joker(key, G.shop_jokers, 'deck'))
+                                local key_append = 'deck'
+                                local key = pseudorandom_element(hyperdef_shop_get_keys(), pseudoseed(key_append))
+     							local joker = SMODS.add_card({ set = 'Joker', area = G.shop_jokers, key = key, key_append = key_append })
+                                create_shop_card_ui(joker)
+                                joker:juice_up()
+                                play_sound('generic1')
                                 G.GAME.shop.joker_max = G.GAME.shop.joker_max + 1
                                 G.shop_jokers.config.card_limit = G.GAME.shop.joker_max
                                 G.shop_jokers.T.w = G.GAME.shop.joker_max * 1.01 * G.CARD_W
