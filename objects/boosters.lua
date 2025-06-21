@@ -1,4 +1,4 @@
-function table_remove_key(t, key)
+local function table_remove_key(t, key)
     local i = 1
     while t[i] do
         if key == t[i] then
@@ -8,7 +8,7 @@ function table_remove_key(t, key)
     end
 end
 
-function hyper_pack_create_card(booster, i, key_append)
+local function hyper_pack_create_card(booster, i, key_append)
     if i == 1 then
         booster.config.keys_spawn = hyperdef_shop_get_keys()
     end
