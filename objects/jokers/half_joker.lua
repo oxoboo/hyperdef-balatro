@@ -3,11 +3,11 @@ SMODS.Joker {
     config = {
         extra = {
             min_scoring = 3,
-            mult = 20
+            mult = 10
         }
     },
     blueprint_compat = true,
-    rarity = 2,
+    rarity = 1,
     -- atlas = 'jokers',
     -- pos = { x = 0, y = 0 },
     cost = 5,
