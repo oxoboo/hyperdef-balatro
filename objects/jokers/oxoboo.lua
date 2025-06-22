@@ -2,8 +2,8 @@ SMODS.Joker {
     key = 'oxoboo',
     blueprint_compat = true,
     rarity = 3,
-    atlas = 'jokers',
-    pos = { x = 3, y = 1 },
+    -- atlas = 'jokers',
+    -- pos = { x = 3, y = 1 },
     cost = 7,
     discovered = true,
     calculate = function(self, card, context)
