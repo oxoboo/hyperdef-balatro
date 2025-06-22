@@ -3,7 +3,7 @@ SMODS.Joker {
     config = {
         extra = {
             xmult = 2,
-            cards = {}
+            pairs = {}
         }
     },
     blueprint_compat = true,
@@ -22,34 +22,31 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.before then
-            card.ability.extra.cards = {}
+            card.ability.extra.pairs = {}
+            local cards = {}
             for _, v in pairs(G.hand.cards) do
-                table.insert(card.ability.extra.cards, v)
+                table.insert(cards, v)
             end
-        end
-        if context.cardarea == G.hand and context.other_card then
-            local c1 = nil
-            for i = 1, #card.ability.extra.cards do
-                if card.ability.extra.cards[i] == context.other_card then
-                    c1 = table.remove(card.ability.extra.cards, i)
-                    break
-                end
-            end
-            if c1 then
-                for i = 1, #card.ability.extra.cards do
-                    if c1:get_id() == card.ability.extra.cards[i]:get_id() then
-                        local c2 =  card.ability.extra.cards[i]
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                c2:juice_up()
-                                return true
-                            end
-                        }))
-                        table.remove(card.ability.extra.cards, i)
-                        return { xmult = card.ability.extra.xmult }
+            while (#cards > 0) do
+                local c = table.remove(cards, 1)
+                for i = 1, #cards do
+                    if c:get_id() == cards[i]:get_id() then
+                        table.insert(card.ability.extra.pairs, { c, table.remove(cards, i) })
+                        break
                     end
                 end
             end
+        end
+        if context.cardarea == G.hand and context.other_card and not context.repetition and not context.end_of_round then
+            for i = 1, #card.ability.extra.pairs do
+                local pair = card.ability.extra.pairs[i]
+                if context.other_card == pair[1] then
+                    return { xmult = card.ability.extra.xmult }
+                end
+            end
+        end
+        if context.after then
+            card.ability.extra.pairs = {}
         end
     end
 }
