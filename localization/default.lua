@@ -125,6 +125,13 @@ return {
                     'first {C:attention}discard{} of round'
                 }
             },
+            j_hyperdef_bongo_cat = {
+              name = 'Bongo Cat',
+              text = {
+                  'Each {C:attention}#1#{} held in',
+                  'hand gives {X:mult,C:white} X#2# {} Mult'
+              }
+            },
             j_hyperdef_oxoboo = {
                 name = 'Oxoboo',
                 text = {

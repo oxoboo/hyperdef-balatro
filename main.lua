@@ -31,6 +31,7 @@ load_objects('jokers', {
     'adam',
     'fish_satan',
     'manic',
+    'bongo_cat',
     'oxoboo',
     'creature',
     'stead',
