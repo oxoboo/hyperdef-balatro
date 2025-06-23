@@ -12,7 +12,7 @@ SMODS.Joker {
     rarity = 1,
     atlas = 'jokers_large',
     pos = { x = 1, y = 0 },
-    cost = 4,
+    cost = 5,
     discovered = true,
     loc_vars = function(self, info_queue, card)
         return {
