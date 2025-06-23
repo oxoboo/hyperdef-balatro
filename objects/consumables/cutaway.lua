@@ -36,7 +36,7 @@ SMODS.Consumable({
     set = 'Spectral',
     key = 'cutaway',
     config = {
-        mod_antes = -1,
+        ante_mod = -1,
         to_dollars = 0,
     },
     pos = { x = 0, y = 0 },
@@ -46,7 +46,7 @@ SMODS.Consumable({
     loc_vars = function(self, info_queue, center)
         return {
             vars = {
-                self.config.mod_antes,
+                self.config.ante_mod,
                 self.config.to_dollars
             }
         }
@@ -59,9 +59,9 @@ SMODS.Consumable({
             trigger = 'after',
             delay = 0.4,
             func = function()
-                ease_ante(self.config.mod_antes)
+                ease_ante(self.config.ante_mod)
                 G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
-                G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante + self.config.mod_antes
+                G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante + self.config.ante_mod
                 ease_dollars(-G.GAME.dollars + self.config.to_dollars)
                 -- change the blind amount during a round
                 G.E_MANAGER:add_event(Event({
