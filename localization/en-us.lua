@@ -74,7 +74,7 @@ return {
                 text = {
                     '{C:mult}+#1#{} Mult if played',
                     'hand contains {C:attention}#2#{} or',
-                    'more scoring cards'
+                    'more {C:attention}scoring{} cards'
                 }
             },
             j_hyperdef_alchemy = {
