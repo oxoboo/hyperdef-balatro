@@ -10,7 +10,6 @@ local function load_objects(dir, t_names)
     end
 end
 
-SMODS.load_file('global_functions.lua')()
 SMODS.load_file('objects/consumables/cutaway.lua')()
 SMODS.load_file('objects/atlas.lua')()
 SMODS.load_file('objects/challenges.lua')()
