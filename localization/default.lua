@@ -208,7 +208,12 @@ return {
             k_hyperdef_hydra2 = 'slurp',
             k_hyperdef_hydra3 = 'nom',
             k_hyperdef_nice = 'Nice!',
-            k_hyperdef_converted = 'Converted!',
+            k_hyperdef_converted = 'Converted!'
+        },
+        v_text = {
+            ch_c_hyperdef_faster_scaling = {
+                'Required score scales faster for each {C:attention}Ante{}'
+            }
         }
     }
 }

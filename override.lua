@@ -22,3 +22,20 @@ function Card:generate_UIBox_ability_table()
     end
     return full_UI_table
 end
+
+local start_run_original = Game.start_run
+function Game:start_run(args)
+    start_run_original(self, args)
+    if args.challenge then
+        local _ch = args.challenge
+        if _ch.rules then
+            if _ch.rules.custom then
+                for k, v in ipairs(_ch.rules.custom) do
+                    if v.id == 'hyperdef_faster_scaling' then
+                        G.GAME.modifiers.scaling = 2
+                    end
+                end
+            end
+        end
+    end
+end
