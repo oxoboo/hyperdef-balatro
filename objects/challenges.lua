@@ -49,21 +49,3 @@ SMODS.Challenge {
     },
     deck = { type = 'Challenge Deck' }
 }
-
-SMODS.Challenge {
-    key = 'hyperdef_instrumentality',
-    rules = {
-        custom = {
-            { id = 'set_joker_slots_ante', value = 5 },
-            { id = 'set_eternal_ante', value = 5 }
-        }
-    },
-    restrictions = {
-        banned_cards = {
-            { id = 'v_petroglyph' },
-            { id = 'v_hieroglyph' }
-        }
-    },
-    jokers = { { id = 'j_hyperdef_adam' } },
-    deck = { type = 'Challenge Deck' }
-}
