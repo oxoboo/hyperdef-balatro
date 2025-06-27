@@ -6,7 +6,6 @@ SMODS.Challenge {
         { id = 'c_familiar' }
     },
     deck = {
-        type = 'Challenge Deck',
         cards = {
             { s = 'S', r = 'Q' },
             { s = 'D', r = 'Q' },
@@ -30,7 +29,6 @@ SMODS.Challenge {
         { id = 'c_cryptid' }
     },
     deck = {
-        type = 'Challenge Deck',
         cards = {
             { s = 'S', r = 'Q' },
             { s = 'D', r = 'Q' },
@@ -46,8 +44,7 @@ SMODS.Challenge {
         { id = 'j_hyperdef_hydra', edition = 'negative', eternal = true },
         { id = 'j_hyperdef_hydra', edition = 'negative', eternal = true },
         { id = 'j_hyperdef_hydra', edition = 'negative', eternal = true }
-    },
-    deck = { type = 'Challenge Deck' }
+    }
 }
 
 SMODS.Challenge {
@@ -56,6 +53,5 @@ SMODS.Challenge {
         { id = 'j_hyperdef_half_joker' },
         { id = 'j_hyperdef_bongo_cat' }
     },
-    consumeables = { { id = 'c_hyperdef_cutaway' } },
-    deck = { type = 'Challenge Deck' }
+    consumeables = { { id = 'c_hyperdef_cutaway' } }
 }
