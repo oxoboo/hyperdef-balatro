@@ -3,7 +3,7 @@
   "name": "Hyper Definition",
   "display_name": "Hyper Definition",
   "author": ["oxoboo"],
-  "description": "Made for a group of friends and content creators.",
+  "description": "Named after a small group of friends and content creators.",
   "prefix": "hyperdef",
   "main_file": "main.lua",
   "priority": 0,
