@@ -49,3 +49,13 @@ SMODS.Challenge {
     },
     deck = { type = 'Challenge Deck' }
 }
+
+SMODS.Challenge {
+    key = 'new_stuff',
+    jokers = {
+        { id = 'j_hyperdef_half_joker' },
+        { id = 'j_hyperdef_bongo_cat' }
+    },
+    consumeables = { { id = 'c_hyperdef_cutaway' } },
+    deck = { type = 'Challenge Deck' }
+}

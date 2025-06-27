@@ -199,7 +199,8 @@ return {
         challenge_names = {
             c_hyperdef_polycule1 = 'Polycule I',
             c_hyperdef_polycule2 = 'Polycule II',
-            c_hyperdef_cerberus = 'Cerberus'
+            c_hyperdef_cerberus = 'Cerberus',
+            c_hyperdef_new_stuff = 'New Stuff!'
         },
         dictionary = {
             k_hyperdef_hyper_pack = 'Hyper Pack',
