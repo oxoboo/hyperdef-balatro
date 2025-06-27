@@ -175,24 +175,6 @@ return {
                     'money to {C:money}$#2#{}'
                 }
             }
-        },
-        Other = {
-            p_hyperdef_hyper_normal = {
-                name = 'Hyper Pack',
-                text = {
-                    'Choose {C:attention}#1#{} of up to',
-                    '{C:attention}#2#{} Hyper Definition',
-                    '{C:joker}Joker{} cards'
-                }
-            },
-            p_hyperdef_hyper_mega = {
-                name = 'Mega Hyper Pack',
-                text = {
-                    'Choose {C:attention}#1#{} of up to',
-                    '{C:attention}#2#{} Hyper Definition',
-                    '{C:joker}Joker{} cards'
-                }
-            }
         }
     },
     misc = {
@@ -203,7 +185,6 @@ return {
             c_hyperdef_new_stuff = 'New Stuff!'
         },
         dictionary = {
-            k_hyperdef_hyper_pack = 'Hyper Pack',
             k_hyperdef_hydra1 = 'munch',
             k_hyperdef_hydra2 = 'slurp',
             k_hyperdef_hydra3 = 'nom',
