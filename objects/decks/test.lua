@@ -30,7 +30,7 @@ if ENABLE_TEST_DECK then
                     -- G.GAME.round_resets.hands = 5
                     -- G.GAME.round_resets.discards = 4
                     -- SMODS.add_card({ set = 'Joker', area = G.jokers, key = 'j_hyperdef_adam', key_append = 'deck' })
-                    -- add_booster('p_hyperdef_hyper_normal', G.consumeables)
+                    -- add_booster('p_buffoon_normal_1', G.consumeables)
                     return true
                 end
             }))
